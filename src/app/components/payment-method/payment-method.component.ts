@@ -8,8 +8,10 @@ import { PaymentMethodService } from '../../services/payment-method.service';
   styleUrls: ['./payment-method.component.css']
 })
 export class PaymentMethodComponent implements OnInit {
-  public title:string='Lista de metodos de pago';
-  public payments:PaymentMethod;
+  public title:string='List of Payment Methods';
+  public payments:PaymentMethod[];
+  id:number;
+  validar:boolean=false;
   constructor(public paymentMethodService:PaymentMethodService) { }
 
   ngOnInit(): void {
@@ -19,8 +21,20 @@ export class PaymentMethodComponent implements OnInit {
   findAll():void{
     this.paymentMethodService.findAll().subscribe(data=>{
       this.payments=data;
-      console.log(data)
+      this.validar=false;
+
     },error=>{
+      console.error(error);
+    })
+  }
+  findById():void{
+    this.paymentMethodService.findById(this.id).subscribe(data=>{
+      this.payments=[];
+      this.payments.push(data);
+      this.validar=false;
+    },error=>{
+      this.validar=true;
+      this.payments=[];
       console.error(error);
     })
   }
