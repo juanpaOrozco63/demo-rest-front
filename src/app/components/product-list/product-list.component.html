@@ -6,16 +6,18 @@
         <thead class="thead-dark">
             <tr>
                 <th>#</th>
-                <th>Email</th>
+                <th>proId</th>
                 <th>Name</th>
+                <th>Price</th>
             </tr>
         </thead>
         <tbody>
 
-            <tr *ngFor="let customer of customers; let i = index">
+            <tr *ngFor="let product of products; let i = index">
                 <td>{{i}}</td>
-                <td>{{customer.email}}</td>
-                <td>{{customer.name}}</td>
+                <td>{{product.proId}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.price | currency:'COP ':true }}</td>
             </tr>
         </tbody>
 

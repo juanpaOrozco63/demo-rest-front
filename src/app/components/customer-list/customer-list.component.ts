@@ -22,5 +22,5 @@ export class CustomerListComponent implements OnInit {
       console.error(error);
     })
   }
-
+  
 }

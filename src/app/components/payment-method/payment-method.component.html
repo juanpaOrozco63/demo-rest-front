@@ -6,16 +6,18 @@
         <thead class="thead-dark">
             <tr>
                 <th>#</th>
-                <th>Email</th>
+                <th>payId</th>
                 <th>Name</th>
+                <th>Enable</th>
             </tr>
         </thead>
         <tbody>
 
-            <tr *ngFor="let customer of customers; let i = index">
+            <tr *ngFor="let payment of payments; let i = index">
                 <td>{{i}}</td>
-                <td>{{customer.email}}</td>
-                <td>{{customer.name}}</td>
+                <td>{{payment.payId}}</td>
+                <td>{{payment.name}}</td>
+                <td>{{payment.enable}}</td>
             </tr>
         </tbody>
 
