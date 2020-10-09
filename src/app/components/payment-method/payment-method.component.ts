@@ -13,6 +13,7 @@ export class PaymentMethodComponent implements OnInit {
   public payments:PaymentMethod[];
   id:number;
   validar:boolean=false;
+  pageActual:number=1;
   constructor(public paymentMethodService:PaymentMethodService) { }
 
   ngOnInit(): void {

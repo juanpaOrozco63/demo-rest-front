@@ -1,9 +1,11 @@
 // Modulos
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 // Rutas
-import { AppRoutingModule } from './app-routing.module';
+import { ROUTES } from './app.routes';
+import { RouterModule } from '@angular/router';
+
 // Componentes
 import { AppComponent } from './app.component';
 import { CustomerListComponent } from './components/customer-list/customer-list.component';
@@ -17,6 +19,10 @@ import {HttpClientModule} from '@angular/common/http';
 import { FormCustomerComponent } from './form-customer/form-customer.component';
 import { FormProductComponent } from './form-product/form-product.component';
 import { FormPaymentComponent } from './form-payment/form-payment.component';
+import { FormUpdateCustomerComponent } from './form-update-customer/form-update-customer.component';
+// Ngm install
+import {NgxPaginationModule} from 'ngx-pagination';
+import { NgFallimgModule } from 'ng-fallimg';
 
 
 @NgModule({
@@ -30,13 +36,21 @@ import { FormPaymentComponent } from './form-payment/form-payment.component';
     PaymentMethodComponent,
     FormCustomerComponent,
     FormProductComponent,
-    FormPaymentComponent
+    FormPaymentComponent,
+    FormUpdateCustomerComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    RouterModule.forRoot(ROUTES, { useHash: true }),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    NgFallimgModule.forRoot({
+      default:'https://www.actualidadecommerce.com/wp-content/uploads/2019/09/not-found-2384304_1280-830x467.jpg'
+
+    })
+
   ],
   providers: [],
   bootstrap: [AppComponent]

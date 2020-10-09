@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../services/customer.service';
 import { Customer } from '../../domain/customer';
 import Swal from 'sweetalert2';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-customer-list',
@@ -13,7 +12,7 @@ export class CustomerListComponent implements OnInit {
   public title:string='List of Customers';
   public customers:Customer[];
   email:string;
-  validar:boolean=false;
+  pageActual:number=1;
   constructor(public customerService:CustomerService) { }
 
   ngOnInit(): void {
@@ -22,7 +21,6 @@ export class CustomerListComponent implements OnInit {
   findAll():void{
     this.customerService.findAll().subscribe(data=>{
       this.customers=data;
-      this.validar=false;
       this.email='';
     },error=>{
       console.error(error);
@@ -32,9 +30,7 @@ export class CustomerListComponent implements OnInit {
     this.customerService.findById(email).subscribe(data=>{
       this.customers=[];
       this.customers.push(data);
-      this.validar=false;
     },error=>{
-      this.validar=true;
       console.error(error);
     })
   }
@@ -56,10 +52,9 @@ export class CustomerListComponent implements OnInit {
         },error=>{
           Swal.fire(
             'Error!',
-            `Your customer ${email} cannot be deleted.`,
+            `${error.error.error}`,
             'error'
           )
-          console.error(error);
         })
         Swal.fire(
           'Deleted!',

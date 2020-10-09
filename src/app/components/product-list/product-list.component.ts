@@ -13,6 +13,7 @@ export class ProductListComponent implements OnInit {
   public products:Product[];
   id:string='';
   validar:boolean=false;
+  pageActual:number=1;
   constructor(public productService:ProductService) { }
 
   ngOnInit(): void {
