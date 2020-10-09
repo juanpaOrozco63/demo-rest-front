@@ -5,9 +5,9 @@
     <hr>
     <div class="form-group row">
         <button class="btn btn-info ml-3" (click)="findAll()"><i class="far fa-eye"></i> Show All</button>
-        <button class="btn btn-secondary ml-3 " (click)="findById()"><i class="fas fa-search"></i> Search</button>
+        <button class="btn btn-secondary ml-3 " (click)="findById(email)"><i class="fas fa-search"></i> Search</button>
         <div class="col">
-            <input class="form-control" type="text" placeholder="Search for email" [(ngModel)]="email" (keyup.enter)="findById()">
+            <input class="form-control" type="text" placeholder="Search for email" [(ngModel)]="email" (keyup.enter)="findById(email)">
         </div>
     </div>
     <div class="alert alert-danger" role="alert" *ngIf="validar">
@@ -37,8 +37,8 @@
                 <td>{{customer.address}}</td>
                 <td>{{customer.phone}}</td>
                 <td>{{customer.enable}}</td>
-                <td class="text-center"><button class="btn btn-primary"><i class="fas fa-pencil-alt"></i></button></td>
-                <td class="text-center"><button class="btn btn-danger"><i class="fas fa-user-minus"></i></button></td>
+                <td class="text-center"><button class="btn btn-primary"><i class="fas fa-pencil-alt" ></i></button></td>
+                <td class="text-center"><button class="btn btn-danger" (click)="delete(customer.email)"><i class="fas fa-user-minus"></i></button></td>
             </tr>
         </tbody>
 

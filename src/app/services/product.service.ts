@@ -15,4 +15,8 @@ export class ProductService {
   public findById(proId:string):Observable<any>{
     return this.httClient.get(this.url+'findById/'+proId);
   }
+  public delete(proId:string):Observable<any>{
+    return this.httClient.delete(this.url+'delete/'+proId);
+
+  }
 }

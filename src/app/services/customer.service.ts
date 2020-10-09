@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CustomerService {
-  private url:string='http://localhost:9090/api/customer/';
+  private  url:string='http://localhost:9090/api/customer/';
   constructor(public httClient:HttpClient) { }
 
   public findAll():Observable<any>{
@@ -14,5 +14,9 @@ export class CustomerService {
   }
   public findById(email:string):Observable<any>{
     return this.httClient.get(this.url+'findById/'+email);
+  }
+  public delete(email:string):Observable<any>{
+    return this.httClient.delete(this.url+'delete/'+email);
+
   }
 }

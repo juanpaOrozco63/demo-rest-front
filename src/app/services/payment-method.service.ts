@@ -15,4 +15,8 @@ export class PaymentMethodService {
   public findById(payId:number):Observable<any>{
     return this.httClient.get(this.url+'findById/'+payId);
   }
+  public delete(payId:number):Observable<any>{
+    return this.httClient.delete(this.url+'delete/'+payId);
+
+  }
 }

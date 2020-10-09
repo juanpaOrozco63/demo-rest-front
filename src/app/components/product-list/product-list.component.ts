@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../domain/product';
 import { ProductService } from '../../services/product.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-list',
@@ -22,22 +23,53 @@ export class ProductListComponent implements OnInit {
     this.productService.findAll().subscribe(data=>{
       this.products=data;
       this.validar=false;
+      this.id='';
     },error=>{
       console.error(error);
     })
   } 
-  findById():void{
-    this.productService.findById(this.id).subscribe(data=>{
+  findById(id:string):void{
+    this.productService.findById(id).subscribe(data=>{
       this.products=[];
       this.products.push(data);
-      this.id='';
       this.validar=false;
 
     },error=>{
       this.validar=true;
-      this.products=[];
-      this.id='';
       console.error(error);
     })
   }
+  delete(proId:string):void{
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: `Yes, delete it! ${proId}`
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.productService.delete(proId).subscribe(data=>{
+          this.products =this.products;
+          this.findAll();
+          this.id='';
+        },error=>{
+          Swal.fire(
+            'Error!',
+            `Your product ${proId} cannot be deleted.`,
+            'error'
+          )
+          console.error(error);
+        })
+        Swal.fire(
+          'Deleted!',
+          `Your product ${proId} has been deleted.`,
+          'success'
+        )
+      }
+    })
+    
+  }
+
 }
