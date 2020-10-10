@@ -12,7 +12,6 @@ export class PaymentMethodComponent implements OnInit {
   public title:string='List of Payment Methods';
   public payments:PaymentMethod[];
   id:number;
-  validar:boolean=false;
   pageActual:number=1;
   constructor(public paymentMethodService:PaymentMethodService) { }
 
@@ -23,7 +22,6 @@ export class PaymentMethodComponent implements OnInit {
   findAll():void{
     this.paymentMethodService.findAll().subscribe(data=>{
       this.payments=data;
-      this.validar=false;
       this.id=null;
 
     },error=>{
@@ -34,9 +32,7 @@ export class PaymentMethodComponent implements OnInit {
     this.paymentMethodService.findById(id).subscribe(data=>{
       this.payments=[];
       this.payments.push(data);
-      this.validar=false;
     },error=>{
-      this.validar=true;
       console.error(error);
     })
   }
@@ -58,7 +54,7 @@ export class PaymentMethodComponent implements OnInit {
         },error=>{
           Swal.fire(
             'Error!',
-            `Your paymentMethod with payId ${id} cannot be deleted.`,
+            `${error.error.error}`,
             'error'
           )
           console.error(error);

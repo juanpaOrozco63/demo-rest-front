@@ -21,6 +21,7 @@ import { FormCustomerComponent } from './components/form-customer/form-customer.
 import { FormProductComponent } from './components/form-product/form-product.component';
 import { FormPaymentComponent } from './components/form-payment/form-payment.component';
 import { FormUpdateCustomerComponent } from './components/form-update-customer/form-update-customer.component';
+import { FormUpdatePaymentMethodComponent } from './components/form-update-payment-method/form-update-payment-method.component';
 // Ngm install
 import {NgxPaginationModule} from 'ngx-pagination';
 import { NgFallimgModule } from 'ng-fallimg';
@@ -39,7 +40,8 @@ import { NgFallimgModule } from 'ng-fallimg';
     FormProductComponent,
     FormPaymentComponent,
     FormUpdateCustomerComponent,
-    FormUpdateProductComponent
+    FormUpdateProductComponent,
+    FormUpdatePaymentMethodComponent
   ],
   imports: [
     BrowserModule,
