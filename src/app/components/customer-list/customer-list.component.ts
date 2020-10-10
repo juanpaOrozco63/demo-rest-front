@@ -17,7 +17,7 @@ export class CustomerListComponent implements OnInit {
 
   ngOnInit(): void {
     this.findAll();
-  }
+  } 
   findAll():void{
     this.customerService.findAll().subscribe(data=>{
       this.customers=data;

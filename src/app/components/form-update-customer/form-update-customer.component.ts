@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { customerModel } from '../models/customer.model';
-import { CustomerService } from '../services/customer.service';
 import Swal from 'sweetalert2';
+import { CustomerService } from '../../services/customer.service';
+import { customerModel } from '../../models/customer.model';
 
 @Component({
   selector: 'app-form-update-customer',

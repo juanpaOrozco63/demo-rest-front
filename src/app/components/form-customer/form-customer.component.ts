@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { customerModel } from '../models/customer.model';
 import Swal from 'sweetalert2';
-import { CustomerService } from '../services/customer.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CustomerService } from '../../services/customer.service';
+import { customerModel } from '../../models/customer.model';
 
 @Component({
   selector: 'app-form-customer',

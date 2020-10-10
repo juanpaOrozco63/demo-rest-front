@@ -4,20 +4,23 @@ import { CustomerListComponent } from './components/customer-list/customer-list.
 import { HomeComponent } from './components/home/home.component';
 import { PaymentMethodComponent } from './components/payment-method/payment-method.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
-import { FormCustomerComponent } from './form-customer/form-customer.component';
-import { FormPaymentComponent } from './form-payment/form-payment.component';
-import { FormProductComponent } from './form-product/form-product.component';
-import { FormUpdateCustomerComponent } from './form-update-customer/form-update-customer.component';
+import { FormUpdateProductComponent } from './components/form-update-product/form-update-product.component';
+import { FormProductComponent } from './components/form-product/form-product.component';
+import { FormPaymentComponent } from './components/form-payment/form-payment.component';
+import { FormUpdateCustomerComponent } from './components/form-update-customer/form-update-customer.component';
+import { FormCustomerComponent } from './components/form-customer/form-customer.component';
 
 export const ROUTES: Routes = [
-  {path:'customers',component:CustomerListComponent},
   {path:'home',component:HomeComponent},
   {path:'products',component:ProductListComponent},
-  {path:'paymentMethod',component:PaymentMethodComponent},
-  {path:'customers/formCustomer',component:FormCustomerComponent},
+  {path:'products/formProduct',component:FormProductComponent},
+  {path:'products/formProduct/:proId',component:FormUpdateProductComponent },
+  {path:'customers',component:CustomerListComponent},
   {path:'customers/formCustomer/:email',component:FormUpdateCustomerComponent},
+  {path:'customers/formCustomer',component:FormCustomerComponent},
+  {path:'paymentMethod',component:PaymentMethodComponent},
   {path:'paymentMethod/formPaymentMethod',component:FormPaymentComponent},
-  {path:'products/formProducts',component:FormProductComponent},
   { path:'',pathMatch:'full',redirectTo:'home' },
   { path:'**',pathMatch:'full',redirectTo:'home'}
 ];
+ 

@@ -14,12 +14,13 @@ import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { PaymentMethodComponent } from './components/payment-method/payment-method.component';
+import { FormUpdateProductComponent } from './components/form-update-product/form-update-product.component';
 // Http
 import {HttpClientModule} from '@angular/common/http';
-import { FormCustomerComponent } from './form-customer/form-customer.component';
-import { FormProductComponent } from './form-product/form-product.component';
-import { FormPaymentComponent } from './form-payment/form-payment.component';
-import { FormUpdateCustomerComponent } from './form-update-customer/form-update-customer.component';
+import { FormCustomerComponent } from './components/form-customer/form-customer.component';
+import { FormProductComponent } from './components/form-product/form-product.component';
+import { FormPaymentComponent } from './components/form-payment/form-payment.component';
+import { FormUpdateCustomerComponent } from './components/form-update-customer/form-update-customer.component';
 // Ngm install
 import {NgxPaginationModule} from 'ngx-pagination';
 import { NgFallimgModule } from 'ng-fallimg';
@@ -37,7 +38,8 @@ import { NgFallimgModule } from 'ng-fallimg';
     FormCustomerComponent,
     FormProductComponent,
     FormPaymentComponent,
-    FormUpdateCustomerComponent
+    FormUpdateCustomerComponent,
+    FormUpdateProductComponent
   ],
   imports: [
     BrowserModule,

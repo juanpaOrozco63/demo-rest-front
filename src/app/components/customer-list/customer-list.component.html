@@ -35,7 +35,7 @@
                     <td>{{customer.address}}</td>
                     <td>{{customer.phone}}</td>
                     <td>{{customer.enable}}</td>
-                    <td class="text-center "><button class="btn btn-primary " type="button " [routerLink]="[ '/customers/formCustomer',customer.email] "><i class="fas fa-pencil-alt " ></i></button></td>
+                    <td class="text-center "><button class="btn btn-primary " type="button" [routerLink]="['/customers/formCustomer',customer.email] "><i class="fas fa-pencil-alt " ></i></button></td>
                     <td class="text-center "><button class="btn btn-danger " type="button " (click)="delete(customer.email) "><i class="fas fa-user-minus "></i></button></td>
                 </tr>
             </tbody>
