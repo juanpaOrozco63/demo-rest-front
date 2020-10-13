@@ -25,6 +25,7 @@ import { FormUpdatePaymentMethodComponent } from './components/form-update-payme
 // Ngm install
 import {NgxPaginationModule} from 'ngx-pagination';
 import { NgFallimgModule } from 'ng-fallimg';
+import { PhonePipe } from './pipes/phone.pipe';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { NgFallimgModule } from 'ng-fallimg';
     FormPaymentComponent,
     FormUpdateCustomerComponent,
     FormUpdateProductComponent,
-    FormUpdatePaymentMethodComponent
+    FormUpdatePaymentMethodComponent,
+    PhonePipe
   ],
   imports: [
     BrowserModule,

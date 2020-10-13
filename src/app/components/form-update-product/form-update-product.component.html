@@ -9,7 +9,17 @@
             <label class="col-2 col-form-label ">ProId</label>
             <div class="col-8 ">
 
-                <input class="form-control " type="text " placeholder="ProId" name="proId" [(ngModel)]="product.proId" disabled>
+                <input class="form-control " type="text " placeholder="ProId" name="proId" [(ngModel)]="product.proId" required minlength="3" maxlength="255" #proId="ngModel" disabled>
+                <div class="alert alert-danger p-0" *ngIf="proId.invalid && (proId.dirty || proId.touched)">
+                    <div *ngIf="proId.errors.required">
+                        The proId is required
+                    </div>
+                    <div *ngIf="proId.errors.minlength">
+                        The proId must be at least 3 characters
+                    </div>
+
+                </div>
+
 
 
             </div>
@@ -18,8 +28,16 @@
             <label class="col-2 col-form-label ">Name</label>
             <div class="col-8 ">
 
-                <input class="form-control " type="text " placeholder="Name" name="name" [(ngModel)]="product.name">
+                <input class="form-control " type="text " placeholder="Name" name="name" [(ngModel)]="product.name" required minlength="4" maxlength="255" #name="ngModel">
+                <div class="alert alert-danger p-0" *ngIf="name.invalid && (name.dirty || name.touched)">
+                    <div *ngIf="name.errors.required">
+                        The name is required
+                    </div>
+                    <div *ngIf="name.errors.minlength">
+                        The name must be at least 4 characters
+                    </div>
 
+                </div>
 
             </div>
         </div>
@@ -27,7 +45,13 @@
             <label class="col-2 col-form-label ">Price</label>
             <div class="col-8 ">
 
-                <input class="form-control " type="text " placeholder="Price" name="price" [(ngModel)]="product.price">
+                <input class="form-control " type="number" placeholder="Price" name="price" [(ngModel)]="product.price" required #price="ngModel">
+                <div class="alert alert-danger p-0" *ngIf="price.invalid && (price.dirty || price.touched)">
+                    <div *ngIf="price.errors.required">
+                        The price is required
+                    </div>
+
+                </div>
 
 
             </div>
@@ -49,7 +73,16 @@
             <label class="col-2 col-form-label ">Detail</label>
             <div class="col-8 ">
 
-                <input class="form-control " type="text" placeholder="Detail" name="detail" [(ngModel)]="product.detail">
+                <input class="form-control " type="text" placeholder="Detail" name="detail" [(ngModel)]="product.detail" required minlength="3" maxlength="255" #detail="ngModel">
+                <div class="alert alert-danger p-0" *ngIf="detail.invalid && (detail.dirty || detail.touched)">
+                    <div *ngIf="detail.errors.required">
+                        The detail is required
+                    </div>
+                    <div *ngIf="detail.errors.minlength">
+                        The detail must be at least 3 characters
+                    </div>
+
+                </div>
 
 
             </div>
@@ -58,7 +91,16 @@
             <label class="col-2 col-form-label ">Image</label>
             <div class="col-8 ">
 
-                <input class="form-control " type="text" placeholder="Image" name="image" [(ngModel)]="product.image">
+                <input class="form-control " type="text" placeholder="Image" name="image" [(ngModel)]="product.image" required minlength="3" maxlength="255" #image="ngModel">
+                <div class="alert alert-danger p-0" *ngIf="image.invalid && (image.dirty || image.touched)">
+                    <div *ngIf="image.errors.required">
+                        The image is required
+                    </div>
+                    <div *ngIf="image.errors.minlength">
+                        The image must be at least 3 characters
+                    </div>
+
+                </div>
 
 
             </div>
@@ -66,7 +108,7 @@
         <div class="form-group row ">
             <label class="col-2 col-form-label ">&nbsp;</label>
             <div class="input-group col-md-8 ">
-                <button type="button " class="btn btn-success btn-block " (click)="update()">
+                <button type="button " class="btn btn-info btn-block " (click)="update()">
                         <i class="far fa-save"></i> Update
                     </button>
 

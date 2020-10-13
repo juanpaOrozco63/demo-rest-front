@@ -9,8 +9,18 @@
             <label class="col-2 col-form-label ">Email</label>
             <div class="col-8 ">
 
-                <input class="form-control " type="email " placeholder="Email" name="email" [(ngModel)]="customer.email">
-
+                <input class="form-control " type="email " placeholder="Email" name="email" [(ngModel)]="customer.email" required minlength="3" maxlength="255" #email="ngModel" email>
+                <div class="alert alert-danger p-0" *ngIf="email.invalid && (email.dirty || email.touched)">
+                    <div *ngIf="email.errors.required">
+                        The email is required
+                    </div>
+                    <div *ngIf="email.errors.minlength">
+                        The email must be at least 3 characters
+                    </div>
+                    <div *ngIf="email.errors.email">
+                        The email must have a valid format
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -18,8 +28,16 @@
             <label class="col-2 col-form-label ">Address</label>
             <div class="col-8 ">
 
-                <input class="form-control " type="text " placeholder="Address" name="address" [(ngModel)]="customer.address">
+                <input class="form-control " type="text " placeholder="Address" name="address" [(ngModel)]="customer.address" required minlength="3" maxlength="255" #address="ngModel">
+                <div class="alert alert-danger p-0" *ngIf="address.invalid && (address.dirty || address.touched)">
+                    <div *ngIf="address.errors.required">
+                        The address is required
+                    </div>
+                    <div *ngIf="address.errors.minlength">
+                        The address must be at least 3 characters
+                    </div>
 
+                </div>
 
             </div>
         </div>
@@ -38,8 +56,16 @@
             <label class="col-2 col-form-label ">Name</label>
             <div class="col-8 ">
 
-                <input class="form-control " type="text " placeholder="Name" name="name" [(ngModel)]="customer.name">
+                <input class="form-control " type="text " placeholder="Name" name="name" [(ngModel)]="customer.name" required minlength="4" maxlength="255" #name="ngModel">
+                <div class="alert alert-danger p-0" *ngIf="name.invalid && (name.dirty || name.touched)">
+                    <div *ngIf="name.errors.required">
+                        The name is required
+                    </div>
+                    <div *ngIf="name.errors.minlength">
+                        The name must be at least 4 characters
+                    </div>
 
+                </div>
 
             </div>
         </div>
@@ -47,7 +73,16 @@
             <label class="col-2 col-form-label ">Token</label>
             <div class="col-8 ">
 
-                <input class="form-control " type="text " placeholder="Token" name="token" [(ngModel)]="customer.token">
+                <input class="form-control " type="text " placeholder="Token" name="token" [(ngModel)]="customer.token" required minlength="3" maxlength="255" #token="ngModel">
+                <div class="alert alert-danger p-0" *ngIf="token.invalid && (token.dirty || token.touched)">
+                    <div *ngIf="token.errors.required">
+                        The token is required
+                    </div>
+                    <div *ngIf="token.errors.minlength">
+                        The token must be at least 3 characters
+                    </div>
+
+                </div>
 
 
             </div>
@@ -56,8 +91,16 @@
             <label class="col-2 col-form-label ">Phone</label>
             <div class="col-8 ">
 
-                <input class="form-control " type="text" placeholder="Phone" name="phone" [(ngModel)]="customer.phone">
+                <input class="form-control " type="text" placeholder="Phone" name="phone" [(ngModel)]="customer.phone" required minlength="6" maxlength="255" #phone="ngModel">
+                <div class="alert alert-danger p-0" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                    <div *ngIf="phone.errors.required">
+                        The phone is required
+                    </div>
+                    <div *ngIf="phone.errors.minlength">
+                        The phone must be at least 6 characters
+                    </div>
 
+                </div>
 
             </div>
         </div>
