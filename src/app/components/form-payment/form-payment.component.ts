@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class FormPaymentComponent implements OnInit {
   title:string='New Payment Method';
   payment = new paymentMethodModel();
-  constructor(private paymentMethodService: PaymentMethodService,private routActive:ActivatedRoute,private rout:Router) { }
+  constructor(private paymentMethodService: PaymentMethodService,private rout:Router) { }
 
   ngOnInit(): void {
   }

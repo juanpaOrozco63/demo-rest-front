@@ -5,12 +5,13 @@ import {catchError} from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { PaymentMethod } from '../domain/payment-method';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PaymentMethodService {
-  private url:string='http://localhost:9090/api/paymentMethod/';
+  private url:string=environment.apiUrl+'api/paymentMethod/';
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 
   constructor(public httClient:HttpClient,private router:Router) { }

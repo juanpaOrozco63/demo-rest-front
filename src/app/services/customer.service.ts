@@ -5,11 +5,12 @@ import { Customer } from '../domain/customer';
 import {catchError} from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-  private  url:string='http://localhost:9090/api/customer/';
+  private  url:string=environment.apiUrl+'api/customer/';
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 
   

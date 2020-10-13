@@ -13,7 +13,7 @@ export class FormProductComponent implements OnInit {
   title:string='New Product';
   product =new productModel();
   constructor(private ProductService:ProductService,
-    private routActive:ActivatedRoute,private rout:Router) { }
+   private rout:Router) { }
 
   ngOnInit(): void {
   }

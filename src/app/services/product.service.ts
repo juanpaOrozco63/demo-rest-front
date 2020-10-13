@@ -5,13 +5,14 @@ import { Product } from '../domain/product';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import {catchError} from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  private url:string='http://localhost:9090/api/product/';
+  private url:string=environment.apiUrl+'api/product/';
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 
   constructor(public httClient:HttpClient,private router:Router) { }

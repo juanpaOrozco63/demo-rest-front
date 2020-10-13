@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { CustomerService } from '../../services/customer.service';
 import { customerModel } from '../../models/customer.model';
+import { Enable } from '../../domain/enable';
+import { EnableService } from '../../services/enable.service';
 
 @Component({
   selector: 'app-form-customer',
@@ -12,9 +14,13 @@ import { customerModel } from '../../models/customer.model';
 export class FormCustomerComponent implements OnInit {
   title: string = 'New Customer';
   customer = new customerModel();
-  constructor(private customerService: CustomerService,private routActive:ActivatedRoute,private rout:Router) {}
+  public enables:Enable[];
+  public showMsg:boolean=false;
+  public messages:string[]=[""];
+  constructor(private customerService: CustomerService,private rout:Router,private enableService:EnableService) {}
 
   ngOnInit(): void {
+    this.findAllEnable();
   }
   
   save(): void {
@@ -27,5 +33,7 @@ export class FormCustomerComponent implements OnInit {
       this.rout.navigate(['/customers'])
     });
   }
-  
+  findAllEnable():void{
+    this.enables=this.enableService.findAll();
+  }
 }
