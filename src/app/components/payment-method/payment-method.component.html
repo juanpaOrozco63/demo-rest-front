@@ -30,7 +30,7 @@
                 <tr *ngFor="let payment of payments| paginate: { itemsPerPage: 8, currentPage: pageActual} ; let i = index">
                     <td>{{i}}</td>
                     <td>{{payment.payId}}</td>
-                    <td>{{payment.name}}</td>
+                    <td class="text-uppercase">{{payment.name}}</td>
                     <td>{{payment.enable}}</td>
                     <td class="text-center"><button class="btn btn-primary" [routerLink]="['/paymentMethod/formPaymentMethod',payment.payId]"><i class="fas fa-pencil-alt"></i></button></td>
                     <td class="text-center"><button class="btn btn-danger" (click)="delete(payment.payId)"><i class="fas fa-user-minus"></i></button></td>

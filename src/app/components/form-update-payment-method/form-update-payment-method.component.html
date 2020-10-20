@@ -9,8 +9,8 @@
             <label class="col-2 col-form-label ">Name</label>
             <div class="col-8 ">
 
-                <input class="form-control " type="text " placeholder="Name" name="name" [(ngModel)]="payment.name" required minlength="4" maxlength="255" #name="ngModel">
-                <div class="alert alert-danger p-0" *ngIf="name.invalid && (name.dirty || name.touched)">
+                <input class="form-control" type="text " placeholder="Name" name="name" [(ngModel)]="payment.name" required minlength="4" maxlength="255" #name="ngModel">
+                <div class="alert alert-danger p-0 " *ngIf="name.invalid && (name.dirty || name.touched)">
                     <div *ngIf="name.errors.required">
                         The name is required
                     </div>
