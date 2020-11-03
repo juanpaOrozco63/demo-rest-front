@@ -1,7 +1,9 @@
 <body>
     <header>
         <!-- Cabecera -->
-        <app-nav-bar></app-nav-bar>
+        <div *ngIf="isAuth()">
+            <app-nav-bar></app-nav-bar>
+        </div>
     </header>
     <!-- Navegacion -->
     <nav>

@@ -26,6 +26,11 @@ import { FormUpdatePaymentMethodComponent } from './components/form-update-payme
 import {NgxPaginationModule} from 'ngx-pagination';
 import { NgFallimgModule } from 'ng-fallimg';
 import { PhonePipe } from './pipes/phone.pipe';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+// Firebase
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -43,12 +48,15 @@ import { PhonePipe } from './pipes/phone.pipe';
     FormUpdateCustomerComponent,
     FormUpdateProductComponent,
     FormUpdatePaymentMethodComponent,
-    PhonePipe
+    PhonePipe,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(ROUTES, { useHash: true }),
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,

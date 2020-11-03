@@ -16,8 +16,14 @@ export class CustomerService {
   
   constructor(public httClient:HttpClient, private router:Router) { }
 
+  createTokenHeader():HttpHeaders{
+    let token=localStorage.getItem('token');
+    let headers= new HttpHeaders({'Authorization':token});
+    return headers;
+  }
   public findAll():Observable<any>{
-    return this.httClient.get<any>(this.url+'findAll').pipe(
+    let headers=this.createTokenHeader();
+    return this.httClient.get<any>(this.url+'findAll',{headers:headers}).pipe(
       catchError(e=>{
         Swal.fire('Error',`The database has no records`,'error');
          return throwError(e);

@@ -10,19 +10,24 @@ import { FormPaymentComponent } from './components/form-payment/form-payment.com
 import { FormUpdateCustomerComponent } from './components/form-update-customer/form-update-customer.component';
 import { FormCustomerComponent } from './components/form-customer/form-customer.component';
 import { FormUpdatePaymentMethodComponent } from './components/form-update-payment-method/form-update-payment-method.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const ROUTES: Routes = [
-  {path:'home',component:HomeComponent},
-  {path:'products',component:ProductListComponent},
-  {path:'products/formProduct',component:FormProductComponent},
-  {path:'products/formProduct/:proId',component:FormUpdateProductComponent },
-  {path:'customers',component:CustomerListComponent},
-  {path:'customers/formCustomer',component:FormCustomerComponent},
-  {path:'customers/formCustomer/:email',component:FormUpdateCustomerComponent},
-  {path:'paymentMethod',component:PaymentMethodComponent},
-  {path:'paymentMethod/formPaymentMethod',component:FormPaymentComponent},
-  {path:'paymentMethod/formPaymentMethod/:payId',component:FormUpdatePaymentMethodComponent},
-  { path:'',pathMatch:'full',redirectTo:'home' },
-  { path:'**',pathMatch:'full',redirectTo:'home'}
+  {path:'home',component:HomeComponent,canActivate:[AuthGuard]},
+  {path:'login',component:LoginComponent},
+  {path:'register',component:RegisterComponent},
+  {path:'products',component:ProductListComponent,canActivate:[AuthGuard]},
+  {path:'products/formProduct',component:FormProductComponent,canActivate:[AuthGuard]},
+  {path:'products/formProduct/:proId',component:FormUpdateProductComponent,canActivate:[AuthGuard] },
+  {path:'customers',component:CustomerListComponent,canActivate:[AuthGuard]},
+  {path:'customers/formCustomer',component:FormCustomerComponent,canActivate:[AuthGuard]},
+  {path:'customers/formCustomer/:email',component:FormUpdateCustomerComponent,canActivate:[AuthGuard]},
+  {path:'paymentMethod',component:PaymentMethodComponent,canActivate:[AuthGuard]},
+  {path:'paymentMethod/formPaymentMethod',component:FormPaymentComponent,canActivate:[AuthGuard]},
+  {path:'paymentMethod/formPaymentMethod/:payId',component:FormUpdatePaymentMethodComponent,canActivate:[AuthGuard]},
+  { path:'',pathMatch:'full',redirectTo:'login' },
+  { path:'**',pathMatch:'full',redirectTo:'login'}
 ];
  
