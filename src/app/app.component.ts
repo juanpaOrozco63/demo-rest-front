@@ -7,7 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cart-front';
-  public isAuth():boolean{
-    return !!localStorage.getItem('usuario');
+  public isAuthAdmin():boolean{
+    return !!localStorage.getItem('token') && !!localStorage.getItem('user') &&localStorage.getItem('type')==='1';
   }
+  public isAuthNormal():boolean{
+    return !!localStorage.getItem('token') && !!localStorage.getItem('user') &&localStorage.getItem('type')==='0';
+  }
+  
 }

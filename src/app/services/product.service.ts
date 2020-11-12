@@ -9,15 +9,24 @@ import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
-})
+})  
 export class ProductService {
 
   private url:string=environment.apiUrl+'api/product/';
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 
   constructor(public httClient:HttpClient,private router:Router) { }
+
+  createTokenHeader():HttpHeaders{
+    let token=localStorage.getItem('token');
+    let headers= new HttpHeaders({'Authorization':token});
+    return headers;
+  }
+
   public findAll():Observable<any>{
-    return this.httClient.get<any>(this.url+'findAll').pipe(
+    let headers=this.createTokenHeader();
+
+    return this.httClient.get<any>(this.url+'findAll',{headers:headers}).pipe(
       catchError(e=>{
         Swal.fire('Error',`The database has no records`,'error');
          return throwError(e);
@@ -25,7 +34,9 @@ export class ProductService {
     );
   }
   public findById(proId:string):Observable<any>{
-    return this.httClient.get<any>(this.url+'findById/'+proId).pipe(
+    let headers=this.createTokenHeader();
+
+    return this.httClient.get<any>(this.url+'findById/'+proId,{headers:headers}).pipe(
       catchError(e=>{
         Swal.fire('Error',`Produc ${proId} don't exist`,'error');
         this.router.navigate(['/products']);
@@ -34,7 +45,9 @@ export class ProductService {
     );
   }
   public delete(proId:string):Observable<any>{
-    return this.httClient.delete<any>(this.url+'delete/'+proId).pipe(
+    let headers=this.createTokenHeader();
+
+    return this.httClient.delete<any>(this.url+'delete/'+proId,{headers:headers}).pipe(
       catchError(e=>{
         Swal.fire('Error',`Product  ${proId} don't exist`,'error');
          return throwError(e);
@@ -43,7 +56,9 @@ export class ProductService {
 
   }
   public save(product:Product):Observable<any>{
-    return this.httClient.post<any>(this.url+'save',product,{headers: this.httpHeaders}).pipe(
+    let headers=this.createTokenHeader();
+
+    return this.httClient.post<any>(this.url+'save',product,{headers: headers}).pipe(
       catchError(e=>{
         Swal.fire('Error',`${e.error.error}`,'error');
          return throwError(e);
@@ -51,7 +66,9 @@ export class ProductService {
 
   }
   public update(product:Product):Observable<any>{
-    return this.httClient.put<any>(this.url+'update',product,{headers: this.httpHeaders}).pipe(
+    let headers=this.createTokenHeader();
+
+    return this.httClient.put<any>(this.url+'update',product,{headers: headers}).pipe(
       catchError(e=>{
         Swal.fire('Error',`Product with ${e.error.error}`,'error');
          return throwError(e);

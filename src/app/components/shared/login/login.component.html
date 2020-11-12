@@ -1,0 +1,40 @@
+<div class="container mt-5 ">
+    <h1 class="text-center mb-2">DEMO-REST</h1>
+    <hr>
+
+    <form autocomplete="off">
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Email</label>
+            <div class="col-8">
+                <input class="form-control" type="email" placeholder="Email" name="email" [(ngModel)]='user.email'>
+
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Password</label>
+            <div class="col-8">
+                <input class="form-control" type="password" placeholder="Password" name="password" [(ngModel)]='user.password'>
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="input-group col-md-8">
+                <button type="submit" class="btn btn-outline-success btn-block" (click)="signIn()">
+                        Sign in
+                    </button>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col">&nbsp;</label>
+
+            <div class="input-group col-md-10">
+                <p>Sign up / <a routerLink="/register" class="badge badge-success">Here</a></p>
+            </div>
+
+        </div>
+
+
+    </form>
+</div>

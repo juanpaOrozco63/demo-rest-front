@@ -1,8 +1,11 @@
 <body>
     <header>
         <!-- Cabecera -->
-        <div *ngIf="isAuth()">
-            <app-nav-bar></app-nav-bar>
+        <div *ngIf="isAuthAdmin()">
+            <app-nav-bar-admin></app-nav-bar-admin>
+        </div>
+        <div *ngIf="isAuthNormal()">
+            <app-nav-bar-normal></app-nav-bar-normal>
         </div>
     </header>
     <!-- Navegacion -->

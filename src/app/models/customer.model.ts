@@ -5,4 +5,5 @@ export class customerModel {
   name: string;
   token: string;
   phone: string;
+  typeUser:number=0;
 }

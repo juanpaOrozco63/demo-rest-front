@@ -8,40 +8,44 @@ import { RouterModule } from '@angular/router';
 
 // Componentes
 import { AppComponent } from './app.component';
-import { CustomerListComponent } from './components/customer-list/customer-list.component';
-import { NavBarComponent } from './components/shared/nav-bar/nav-bar.component';
-import { HomeComponent } from './components/home/home.component';
+import { CustomerListComponent } from './components/Admin/home/Customer/customer-list/customer-list.component';
+import { NavBarAdminComponent } from './components/shared/nav-bar-admin/nav-bar.component';
+import { HomeAdminComponent } from './components/Admin/home/home.component';
+import { HomeNormalComponent } from './components/Normal/home/home.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
-import { ProductListComponent } from './components/product-list/product-list.component';
-import { PaymentMethodComponent } from './components/payment-method/payment-method.component';
-import { FormUpdateProductComponent } from './components/form-update-product/form-update-product.component';
+import { ProductListComponent } from './components/Admin/home/Product/product-list/product-list.component';
+import { PaymentMethodListComponent } from './components/Admin/home/PaymentMethod/payment-method-list/payment-method.component';
+import { FormUpdateProductComponent } from './components/Admin/home/Product/form-update-product/form-update-product.component';
+import { FormCustomerComponent } from './components/Admin/home/Customer/form-customer/form-customer.component';
+import { FormProductComponent } from './components/Admin/home/Product/form-product/form-product.component';
+import { FormPaymentComponent } from './components/admin/home/paymentMethod/form-payment/form-payment.component';
+import { FormUpdateCustomerComponent } from './components/Admin/home/Customer/form-update-customer/form-update-customer.component';
+import { FormUpdatePaymentMethodComponent } from './components/admin/home/paymentMethod/form-update-payment-method/form-update-payment-method.component';
 // Http
 import {HttpClientModule} from '@angular/common/http';
-import { FormCustomerComponent } from './components/form-customer/form-customer.component';
-import { FormProductComponent } from './components/form-product/form-product.component';
-import { FormPaymentComponent } from './components/form-payment/form-payment.component';
-import { FormUpdateCustomerComponent } from './components/form-update-customer/form-update-customer.component';
-import { FormUpdatePaymentMethodComponent } from './components/form-update-payment-method/form-update-payment-method.component';
 // Ngm install
 import {NgxPaginationModule} from 'ngx-pagination';
 import { NgFallimgModule } from 'ng-fallimg';
 import { PhonePipe } from './pipes/phone.pipe';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/Shared/login/login.component';
+import { RegisterComponent } from './components/Shared/register/register.component';
 // Firebase
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
+import { ShoppingProductListComponent } from './components/Admin/home/ShoppingProduct/shopping-product-list/shopping-product-list.component';
+import { NavbarnormalComponent } from './components/shared/nav-bar-normal/navbarnormal.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerListComponent,
-    NavBarComponent,
-    HomeComponent,
+    NavBarAdminComponent,
+    HomeAdminComponent,
+    HomeNormalComponent,
     FooterComponent,
     ProductListComponent,
-    PaymentMethodComponent,
+    PaymentMethodListComponent,
     FormCustomerComponent,
     FormProductComponent,
     FormPaymentComponent,
@@ -50,7 +54,9 @@ import { environment } from '../environments/environment';
     FormUpdatePaymentMethodComponent,
     PhonePipe,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ShoppingProductListComponent,
+    NavbarnormalComponent
   ],
   imports: [
     BrowserModule,

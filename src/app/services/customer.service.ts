@@ -31,7 +31,9 @@ export class CustomerService {
     );
   }
   public findById(email:string):Observable<any>{
-    return this.httClient.get<any>(this.url+'findById/'+email).pipe(
+    let headers=this.createTokenHeader();
+
+    return this.httClient.get<any>(this.url+'findById/'+email,{headers:headers}).pipe(
       catchError(e=>{
        Swal.fire('Error',`Customer ${email} don't exist`,'error');
        this.router.navigate(['/customers']);
@@ -40,7 +42,9 @@ export class CustomerService {
     );
   }
   public delete(email:string):Observable<any>{
-    return this.httClient.delete<any>(this.url+'delete/'+email).pipe(
+    let headers=this.createTokenHeader();
+
+    return this.httClient.delete<any>(this.url+'delete/'+email,{headers: headers}).pipe(
       catchError(e=>{
         Swal.fire('Error',`Customer  ${email} don't exist`,'error');
          return throwError(e);
@@ -49,16 +53,20 @@ export class CustomerService {
 
   }
   public save(customer:Customer):Observable<any>{
-    return this.httClient.post<any>(this.url+'save',customer,{headers: this.httpHeaders}).pipe(
+    let headers=this.createTokenHeader();
+
+    return this.httClient.post<any>(this.url+'save',customer,{headers: headers}).pipe(
       catchError(e=>{
-        Swal.fire('Error',`${e.error.error}`,'error');
+        Swal.fire('Error',`${e}`,'error');
          return throwError(e);
       })
     );
 
   }
   public update(customer:Customer):Observable<any>{
-    return this.httClient.put<any>(this.url+'update',customer,{headers: this.httpHeaders}).pipe(
+    let headers=this.createTokenHeader();
+
+    return this.httClient.put<any>(this.url+'update',customer,{headers: headers}).pipe(
       catchError(e=>{
         Swal.fire('Error',`Customer with ${customer.email} don't exist`,'error');
          return throwError(e);

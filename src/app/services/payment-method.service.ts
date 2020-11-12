@@ -15,8 +15,15 @@ export class PaymentMethodService {
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 
   constructor(public httClient:HttpClient,private router:Router) { }
+  createTokenHeader():HttpHeaders{
+    let token=localStorage.getItem('token');
+    let headers= new HttpHeaders({'Authorization':token});
+    return headers;
+  }
   public findAll():Observable<any>{
-    return this.httClient.get<any>(this.url+'findAll').pipe(
+    let headers=this.createTokenHeader();
+
+    return this.httClient.get<any>(this.url+'findAll',{headers:headers}).pipe(
       catchError(e=>{
         Swal.fire('Error',`The database has no records`,'error');
          return throwError(e);
@@ -24,7 +31,9 @@ export class PaymentMethodService {
     );
   }
   public findById(payId:number):Observable<any>{
-    return this.httClient.get<any>(this.url+'findById/'+payId).pipe(
+    let headers=this.createTokenHeader();
+
+    return this.httClient.get<any>(this.url+'findById/'+payId,{headers:headers}).pipe(
       catchError(e=>{
        Swal.fire('Error',`Payment Method with payId ${payId} don't exist`,'error');
        this.router.navigate(['/paymentMethod']);
@@ -33,7 +42,9 @@ export class PaymentMethodService {
     );
   }
   public delete(payId:number):Observable<any>{
-    return this.httClient.delete<any>(this.url+'delete/'+payId).pipe(
+    let headers=this.createTokenHeader();
+
+    return this.httClient.delete<any>(this.url+'delete/'+payId,{headers:headers}).pipe(
       catchError(e=>{
        Swal.fire('Error',`Payment Method with payId ${payId} don't exist`,'error');
         return throwError(e);
@@ -42,7 +53,9 @@ export class PaymentMethodService {
 
   }
   public save(payment:PaymentMethod):Observable<any>{
-    return this.httClient.post<any>(this.url+'save',payment,{headers: this.httpHeaders}).pipe(
+    let headers=this.createTokenHeader();
+
+    return this.httClient.post<any>(this.url+'save',payment,{headers:headers}).pipe(
       catchError(e=>{
         Swal.fire('Error',`${e.error.error}`,'error');
          return throwError(e);
@@ -51,7 +64,9 @@ export class PaymentMethodService {
 
   }
   public update(payment:PaymentMethod):Observable<any>{
-    return this.httClient.put<any>(this.url+'update',payment,{headers: this.httpHeaders}).pipe(
+    let headers=this.createTokenHeader();
+
+    return this.httClient.put<any>(this.url+'update',payment,{headers:headers}).pipe(
       catchError(e=>{
         Swal.fire('Error',`Payment Method with payId ${payment.name} don't exist`,'error');
          return throwError(e);
