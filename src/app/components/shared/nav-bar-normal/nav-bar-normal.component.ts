@@ -4,14 +4,16 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar-normal',
-  templateUrl: './navbarnormal.component.html',
-  styleUrls: ['./navbarnormal.component.css']
+  templateUrl: './nav-bar-normal.component.html',
+  styleUrls: ['./nav-bar-normal.component.css']
 })
 export class NavbarnormalComponent implements OnInit {
 
   constructor(public auth: AngularFireAuth, private route:Router) { }
 
   ngOnInit(): void {
+  }
+  ngOnDestroy(): void {
   }
   logout() {
     this.auth.signOut();

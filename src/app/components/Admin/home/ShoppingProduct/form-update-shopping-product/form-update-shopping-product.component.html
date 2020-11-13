@@ -1,0 +1,104 @@
+<div class="container">
+    <h1 class="text-center mt-5">
+        {{title}}<span> (data)</span>
+    </h1>
+
+    <hr>
+    <form>
+        <div class=" form-group row ">
+            <label class="col-2 col-form-label ">ShprId</label>
+            <div class="col-8 ">
+
+                <input class="form-control " type="text" placeholder="ShprId" name="shprId" [(ngModel)]="shprs.shprId" required minlength="3" maxlength="255" #shprId="ngModel" disabled>
+                <div class="alert alert-danger p-0" *ngIf="shprId.invalid && (shprId.dirty || shprId.touched)">
+                    <div *ngIf="shprId.errors.required">
+                        The shprId is required
+                    </div>
+                    <div *ngIf="shprId.errors.minlength">
+                        The shprId must be at least 3 characters
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class=" form-group row ">
+            <label class="col-2 col-form-label ">ProId</label>
+            <div class="col-8 ">
+
+                <input class="form-control " type="text" placeholder="ProId" name="proId" [(ngModel)]="shprs.productId" required minlength="3" maxlength="255" #proId="ngModel">
+                <div class="alert alert-danger p-0" *ngIf="proId.invalid && (proId.dirty || proId.touched)">
+                    <div *ngIf="proId.errors.required">
+                        The proId is required
+                    </div>
+                    <div *ngIf="proId.errors.minlength">
+                        The proId must be at least 3 characters
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class=" form-group row ">
+            <label class="col-2 col-form-label ">CarId</label>
+            <div class="col-8 ">
+
+                <input class="form-control " type="number" placeholder="CarId" name="carId" [(ngModel)]="shprs.shoppingCartId" required maxlength="255" #carId="ngModel">
+                <div class="alert alert-danger p-0" *ngIf="carId.invalid && (carId.dirty || carId.touched)">
+                    <div *ngIf="carId.errors.required">
+                        The carId is required
+                    </div>
+                    <div *ngIf="carId.errors.minlength">
+                        The carId must be at least 4 characters
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class=" form-group row ">
+            <label class="col-2 col-form-label ">Quantity</label>
+            <div class="col-8 ">
+
+                <input class="form-control " type="number" placeholder="Quantity" name="quantity" [(ngModel)]="shprs.quantity" required maxlength="255" #quantity="ngModel">
+                <div class="alert alert-danger p-0" *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)">
+                    <div *ngIf="quantity.errors.required">
+                        The quantity is required
+                    </div>
+                    <div *ngIf="quantity.errors.minlength">
+                        The quantity must be at least 6 characters
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class=" form-group row ">
+            <label class="col-2 col-form-label ">Total</label>
+            <div class="col-8 ">
+
+                <input class="form-control " type="number" placeholder="Total" name="total" [(ngModel)]="shprs.total" required maxlength="255" #total="ngModel">
+                <div class="alert alert-danger p-0" *ngIf="total.invalid && (total.dirty || total.touched)">
+                    <div *ngIf="total.errors.required">
+                        The total is required
+                    </div>
+                    <div *ngIf="total.errors.minlength">
+                        The total must be at least 6 characters
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group row ">
+            <label class="col-2 col-form-label ">&nbsp;</label>
+            <div class="input-group col-md-8 ">
+                <button type="button " class="btn btn-success btn-block " (click)="update()">
+                        <i class="far fa-save"></i> Save
+                    </button>
+
+            </div>
+        </div>
+    </form>
+</div>

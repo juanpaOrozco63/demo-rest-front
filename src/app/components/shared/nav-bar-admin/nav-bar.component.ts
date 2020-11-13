@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
@@ -12,6 +12,9 @@ export class NavBarAdminComponent implements OnInit {
   constructor(public auth: AngularFireAuth, private route:Router) { }
 
   ngOnInit(): void {
+  }
+  ngOnDestroy(): void {
+    
   }
   logout() {
     this.auth.signOut();

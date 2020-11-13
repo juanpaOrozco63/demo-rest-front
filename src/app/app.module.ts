@@ -1,26 +1,35 @@
 // Modulos
+import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { environment } from '../environments/environment';
 // Rutas
 import { ROUTES } from './app.routes';
 import { RouterModule } from '@angular/router';
 
 // Componentes
-import { AppComponent } from './app.component';
+
+// Customer
 import { CustomerListComponent } from './components/Admin/home/Customer/customer-list/customer-list.component';
-import { NavBarAdminComponent } from './components/shared/nav-bar-admin/nav-bar.component';
+import { FormCustomerComponent } from './components/Admin/home/Customer/form-customer/form-customer.component';
+import { FormUpdateCustomerComponent } from './components/Admin/home/Customer/form-update-customer/form-update-customer.component';
+// Product
+import { FormUpdateProductComponent } from './components/Admin/home/Product/form-update-product/form-update-product.component';
+import { FormProductComponent } from './components/Admin/home/Product/form-product/form-product.component';
+import { ProductListComponent } from './components/Admin/home/Product/product-list/product-list.component';
+// PaymentMethod
+import { PaymentMethodListComponent } from './components/Admin/home/PaymentMethod/payment-method-list/payment-method.component';
+import { FormPaymentComponent } from './components/admin/home/paymentMethod/form-payment/form-payment.component';
+import { FormUpdatePaymentMethodComponent } from './components/admin/home/paymentMethod/form-update-payment-method/form-update-payment-method.component';
+// ShoppingProduct
+
+// Shared
 import { HomeAdminComponent } from './components/Admin/home/home.component';
 import { HomeNormalComponent } from './components/Normal/home/home.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
-import { ProductListComponent } from './components/Admin/home/Product/product-list/product-list.component';
-import { PaymentMethodListComponent } from './components/Admin/home/PaymentMethod/payment-method-list/payment-method.component';
-import { FormUpdateProductComponent } from './components/Admin/home/Product/form-update-product/form-update-product.component';
-import { FormCustomerComponent } from './components/Admin/home/Customer/form-customer/form-customer.component';
-import { FormProductComponent } from './components/Admin/home/Product/form-product/form-product.component';
-import { FormPaymentComponent } from './components/admin/home/paymentMethod/form-payment/form-payment.component';
-import { FormUpdateCustomerComponent } from './components/Admin/home/Customer/form-update-customer/form-update-customer.component';
-import { FormUpdatePaymentMethodComponent } from './components/admin/home/paymentMethod/form-update-payment-method/form-update-payment-method.component';
+import { NavBarAdminComponent } from './components/shared/nav-bar-admin/nav-bar.component';
+import { NavbarnormalComponent } from './components/shared/nav-bar-normal/nav-bar-normal.component';
 // Http
 import {HttpClientModule} from '@angular/common/http';
 // Ngm install
@@ -31,9 +40,9 @@ import { LoginComponent } from './components/Shared/login/login.component';
 import { RegisterComponent } from './components/Shared/register/register.component';
 // Firebase
 import { AngularFireModule } from '@angular/fire';
-import { environment } from '../environments/environment';
 import { ShoppingProductListComponent } from './components/Admin/home/ShoppingProduct/shopping-product-list/shopping-product-list.component';
-import { NavbarnormalComponent } from './components/shared/nav-bar-normal/navbarnormal.component';
+import { FormUpdateShoppingProductComponent } from './components/Admin/home/ShoppingProduct/form-update-shopping-product/form-update-shopping-product.component';
+import { FormShoppingProductComponent } from './components/Admin/home/ShoppingProduct/form-shopping-product/form-shopping-product.component';
 
 
 @NgModule({
@@ -55,8 +64,10 @@ import { NavbarnormalComponent } from './components/shared/nav-bar-normal/navbar
     PhonePipe,
     LoginComponent,
     RegisterComponent,
+    NavbarnormalComponent,
     ShoppingProductListComponent,
-    NavbarnormalComponent
+    FormUpdateShoppingProductComponent,
+    FormShoppingProductComponent
   ],
   imports: [
     BrowserModule,

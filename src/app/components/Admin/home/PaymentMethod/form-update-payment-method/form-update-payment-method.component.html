@@ -6,6 +6,24 @@
     <hr>
     <form>
         <div class=" form-group row ">
+            <label class="col-2 col-form-label ">PayId</label>
+            <div class="col-8 ">
+
+                <input class="form-control" type="text " placeholder="PayId" name="payId" [(ngModel)]="payment.payId" required minlength="4" maxlength="255" #payId="ngModel" disabled>
+                <div class="alert alert-danger p-0 " *ngIf="payId.invalid && (payId.dirty || payId.touched)">
+                    <div *ngIf="payId.errors.required">
+                        The payId is required
+                    </div>
+                    <div *ngIf="payId.errors.minlength">
+                        The payId must be at least 4 characters
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class=" form-group row ">
             <label class="col-2 col-form-label ">Name</label>
             <div class="col-8 ">
 

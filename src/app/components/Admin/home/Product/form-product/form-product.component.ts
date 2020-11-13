@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { productModel } from '../../../../../models/product.model';
 import { ProductService } from '../../../../../services/product.service';

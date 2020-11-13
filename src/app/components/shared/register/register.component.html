@@ -1,6 +1,10 @@
 <div class="container mt-5">
 
-    <h1 class="text-center">DEMO-REST</h1>
+    <h1 class="text-center">{{title}}</h1>
+    <hr>
+    <div class="text-center">
+        <img src="https://www.maihiro.com/_Resources/Persistent/57ff025ff9efa2dd72e614dcb79a3f711ecd9e82/aussage-studienteilnehmer-trendstudie-199x199.png">
+    </div>
     <hr>
     <form autocomplete="off">
         <div class="form-group row">
@@ -92,14 +96,22 @@
         <div class="form-group row">
             <label class="col-2 col-form-label">Confirm password</label>
             <div class="col-8">
-                <input class="form-control" type="password" placeholder="Confirm Password" name="confirmPassword" [(ngModel)]='user.confirmPassword'>
+                <input class="form-control" type="password" placeholder="Confirm Password" name="confirmPassword" [(ngModel)]='user.confirmPassword' required minlength="6" maxlength="255" #confirmPassword="ngModel">
+                <div class="alert alert-danger p-0" *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
+                    <div *ngIf="confirmPassword.errors.required">
+                        Confirm Password is required
+                    </div>
+                    <div *ngIf="confirmPassword.errors.minlength">
+                        The confirmPassword must be at least 6 characters
+                    </div>
 
+                </div>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-2 col-form-label">&nbsp;</label>
             <div class="input-group col-md-8">
-                <button type="submit" class="btn btn-outline-danger btn-block" (click)="register()">
+                <button type="submit" class="btn btn-outline-info btn-block" (click)="register()">
                         Sign up
                     </button>
             </div>
@@ -108,7 +120,7 @@
         <div class="form-group row">
             <label class="col">&nbsp;</label>
             <div class="input-group col-md-10">
-                <p>Sign in / <a routerLink="/login" class="badge badge-danger">Here</a></p>
+                <p>Sign in / <a routerLink="/login" class="badge badge-info">Here</a></p>
             </div>
 
         </div>

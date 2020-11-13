@@ -1,1 +1,45 @@
-<p>shopping-product-list works!</p>
+<div class="container">
+    <h1 class="text-center mt-5">
+        {{title}}
+    </h1>
+    <hr>
+    <div class="form-group row">
+        <button class="btn btn-info ml-3" (click)="findAll()"><i class="far fa-eye"></i> Show All</button>
+        <button class="btn btn-secondary ml-3 " (click)="findById(shprId)"><i class="fas fa-search"></i> Search</button>
+        <div class="col">
+            <input class="form-control" type="text" placeholder="Search for shprId" [(ngModel)]="shprId" (keyup.enter)="findById(shprId)">
+        </div>
+    </div>
+    <hr class="">
+    <button class="btn btn-success mb-2" routerLink="formShoppingProduct"> <i class="far fa-file"></i> New Shopping Product</button>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover text-center mb-4">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ShprId</th>
+                    <th>ProId</th>
+                    <th>CarId</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let shpr of shoppingProducts | paginate: { itemsPerPage: 8, currentPage: pageActual} ; let i = index ">
+                    <td>{{shpr.shprId}}</td>
+                    <td>{{shpr.productId}}</td>
+                    <td>{{shpr.shoppingCartId}}</td>
+                    <td>{{shpr.quantity }}</td>
+                    <td>{{shpr.total| currency:'COP ' }}</td>
+                    <td class="text-center "><button class="btn btn-primary " type="button" [routerLink]="['/shoppingProduct/formShoppingProduct',shpr.shprId] "><i class="fas fa-pencil-alt " ></i></button></td>
+                    <td class="text-center "><button class="btn btn-danger " type="button " (click)="delete(shpr.shprId) "><i class="fas fa-user-minus "></i></button></td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <pagination-controls class="text-center " (pageChange)="pageActual=$event"></pagination-controls>
+
+
+</div>

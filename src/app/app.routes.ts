@@ -11,23 +11,33 @@ import { FormCustomerComponent } from './components/Admin/home/Customer/form-cus
 import { FormUpdatePaymentMethodComponent } from './components/admin/home/paymentMethod/form-update-payment-method/form-update-payment-method.component';
 import { LoginComponent } from './components/Shared/login/login.component';
 import { RegisterComponent } from './components/Shared/register/register.component';
-import { AuthGuard } from './guards/auth.guard';
+import { AuthAdminGuard } from './guards/authAdmin.guard';
 import { HomeNormalComponent } from './components/Normal/home/home.component';
+import { ShoppingProductListComponent } from './components/Admin/home/ShoppingProduct/shopping-product-list/shopping-product-list.component';
+import { FormShoppingProductComponent } from './components/Admin/home/ShoppingProduct/form-shopping-product/form-shopping-product.component';
+import { FormUpdateShoppingProductComponent } from './components/Admin/home/ShoppingProduct/form-update-shopping-product/form-update-shopping-product.component';
+import { AuthNormalGuard } from './guards/auth-normal.guard';
 
 export const ROUTES: Routes = [
-  {path:'homeAdmin',component:HomeAdminComponent,canActivate:[AuthGuard]},
-  {path:'homeNormal',component:HomeNormalComponent,canActivate:[AuthGuard]},
+  // Admin
+  {path:'homeAdmin',component:HomeAdminComponent,canActivate:[AuthAdminGuard]},
+  {path:'products',component:ProductListComponent,canActivate:[AuthAdminGuard]},
+  {path:'products/formProduct',component:FormProductComponent,canActivate:[AuthAdminGuard]},
+  {path:'products/formProduct/:proId',component:FormUpdateProductComponent,canActivate:[AuthAdminGuard] },
+  {path:'customers',component:CustomerListComponent,canActivate:[AuthAdminGuard]},
+  {path:'customers/formCustomer',component:FormCustomerComponent,canActivate:[AuthAdminGuard]},
+  {path:'customers/formCustomer/:email',component:FormUpdateCustomerComponent,canActivate:[AuthAdminGuard]},
+  {path:'paymentMethod',component:PaymentMethodListComponent,canActivate:[AuthAdminGuard]},
+  {path:'paymentMethod/formPaymentMethod',component:FormPaymentComponent,canActivate:[AuthAdminGuard]},
+  {path:'paymentMethod/formPaymentMethod/:payId',component:FormUpdatePaymentMethodComponent,canActivate:[AuthAdminGuard]},
+  {path:'shoppingProduct',component:ShoppingProductListComponent,canActivate:[AuthAdminGuard]},
+  {path:'shoppingProduct/formShoppingProduct',component:FormShoppingProductComponent,canActivate:[AuthAdminGuard]},
+  {path:'shoppingProduct/formShoppingProduct/:shprId',component:FormUpdateShoppingProductComponent,canActivate:[AuthAdminGuard]},
+  // Normal
+  {path:'homeNormal',component:HomeNormalComponent,canActivate:[AuthNormalGuard]},
+  // Shared
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
-  {path:'products',component:ProductListComponent,canActivate:[AuthGuard]},
-  {path:'products/formProduct',component:FormProductComponent,canActivate:[AuthGuard]},
-  {path:'products/formProduct/:proId',component:FormUpdateProductComponent,canActivate:[AuthGuard] },
-  {path:'customers',component:CustomerListComponent,canActivate:[AuthGuard]},
-  {path:'customers/formCustomer',component:FormCustomerComponent,canActivate:[AuthGuard]},
-  {path:'customers/formCustomer/:email',component:FormUpdateCustomerComponent,canActivate:[AuthGuard]},
-  {path:'paymentMethod',component:PaymentMethodListComponent,canActivate:[AuthGuard]},
-  {path:'paymentMethod/formPaymentMethod',component:FormPaymentComponent,canActivate:[AuthGuard]},
-  {path:'paymentMethod/formPaymentMethod/:payId',component:FormUpdatePaymentMethodComponent,canActivate:[AuthGuard]},
   { path:'',pathMatch:'full',redirectTo:'login' },
   { path:'**',pathMatch:'full',redirectTo:'login'}
 ];

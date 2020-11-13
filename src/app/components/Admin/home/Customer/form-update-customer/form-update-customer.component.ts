@@ -38,7 +38,7 @@ export class FormUpdateCustomerComponent implements OnInit {
       )
     })
       }
-      return():void{
+      back():void{
         this.route.navigate(['/customers'])
       }
 }

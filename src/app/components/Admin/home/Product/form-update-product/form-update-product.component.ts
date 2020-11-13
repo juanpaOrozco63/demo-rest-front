@@ -21,7 +21,6 @@ product =new productModel();
   loadCustomer():void{
     this.routActive.params.subscribe(resp=>{
       let proId =resp['proId'];
-      console.log(proId);
       if(proId){
         this.productService.findById(proId).subscribe((data)=>{
           this.product=data;

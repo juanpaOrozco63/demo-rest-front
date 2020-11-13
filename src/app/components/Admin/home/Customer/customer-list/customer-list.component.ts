@@ -3,6 +3,7 @@ import { Customer } from '../../../../../domain/customer';
 import Swal from 'sweetalert2';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { CustomerService } from '../../../../../services/customer.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-customer-list',
@@ -12,6 +13,8 @@ import { CustomerService } from '../../../../../services/customer.service';
 export class CustomerListComponent implements OnInit {
   public title:string='List of Customers';
   public customers:Customer[];
+  public clientFirebase: Subscription =new Subscription;
+
   email:string;
   pageActual:number=1;
   userActive:string;
@@ -19,10 +22,14 @@ export class CustomerListComponent implements OnInit {
 
   ngOnInit(): void {
     this.findAll();
-    this.auth.user.subscribe(resp=>{
+    this.clientFirebase=this.auth.user.subscribe(resp=>{
       this.userActive=resp.email;
     })
-      } 
+      }
+      ngOnDestroy(): void {
+        this.clientFirebase.unsubscribe();
+        
+      }
   findAll():void{
     this.customerService.findAll().subscribe(data=>{
       this.customers=data;
@@ -35,13 +42,11 @@ export class CustomerListComponent implements OnInit {
     this.customerService.findById(email).subscribe(data=>{
       this.customers=[];
       this.customers.push(data);
-      console.log(this.customers[0].typeUser);
     },error=>{
       console.error(error);
     })
   }
   async deleteFirebase():Promise<void>{
-    console.log("Eliminado en firebase");
     return await (await this.auth.currentUser).delete();
   }
   delete(email:string):void{

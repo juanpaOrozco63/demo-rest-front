@@ -11,9 +11,6 @@ import { environment } from '../../environments/environment';
 })
 export class CustomerService {
   private  url:string=environment.apiUrl+'api/customer/';
-  private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
-
-  
   constructor(public httClient:HttpClient, private router:Router) { }
 
   createTokenHeader():HttpHeaders{

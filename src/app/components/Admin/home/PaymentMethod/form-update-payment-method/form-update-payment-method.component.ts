@@ -21,7 +21,6 @@ export class FormUpdatePaymentMethodComponent implements OnInit {
   loadCustomer():void{
     this.routActive.params.subscribe(resp=>{
       let payId =resp['payId'];
-      console.log(payId);
       if(payId){
         this.paymentMethosService.findById(payId).subscribe((data)=>{
           this.payment=data;

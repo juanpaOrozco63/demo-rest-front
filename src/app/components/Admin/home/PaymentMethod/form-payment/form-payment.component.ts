@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { PaymentMethodService } from 'src/app/services/payment-method.service';
 import { paymentMethodModel } from '../../../../../models/payment.model';
 import Swal from 'sweetalert2';
