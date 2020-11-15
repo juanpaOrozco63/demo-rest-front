@@ -12,7 +12,7 @@ import { CustomerService } from '../../../../../services/customer.service';
 export class FormCustomerComponent implements OnInit {
   title: string = 'New Customer';
   customer = new customerModel();
-  constructor(private customerService: CustomerService,private rout:Router) {}
+  constructor(private customerService: CustomerService,private route:Router) {}
 
   ngOnInit(): void {
   }
@@ -24,7 +24,7 @@ export class FormCustomerComponent implements OnInit {
         `Customer ${this.customer.email} was create successfull`,
         'success'
       );
-      this.rout.navigate(['/customers'])
+      this.route.navigate(['/customers'])
     });
   }
   

@@ -17,6 +17,10 @@ import { ShoppingProductListComponent } from './components/Admin/home/ShoppingPr
 import { FormShoppingProductComponent } from './components/Admin/home/ShoppingProduct/form-shopping-product/form-shopping-product.component';
 import { FormUpdateShoppingProductComponent } from './components/Admin/home/ShoppingProduct/form-update-shopping-product/form-update-shopping-product.component';
 import { AuthNormalGuard } from './guards/auth-normal.guard';
+import { ShoppingCartListComponent } from './components/Admin/home/ShoppingCart/shopping-cart-list/shopping-cart-list.component';
+import { FormShoppingCartComponent } from './components/Admin/home/ShoppingCart/form-shopping-cart/form-shopping-cart.component';
+import { FormUpdateShoppingCartComponent } from './components/Admin/home/ShoppingCart/form-update-shopping-cart/form-update-shopping-cart.component';
+import { StoreComponent } from './components/Normal/home/Store/store/store.component';
 
 export const ROUTES: Routes = [
   // Admin
@@ -33,8 +37,12 @@ export const ROUTES: Routes = [
   {path:'shoppingProduct',component:ShoppingProductListComponent,canActivate:[AuthAdminGuard]},
   {path:'shoppingProduct/formShoppingProduct',component:FormShoppingProductComponent,canActivate:[AuthAdminGuard]},
   {path:'shoppingProduct/formShoppingProduct/:shprId',component:FormUpdateShoppingProductComponent,canActivate:[AuthAdminGuard]},
+  {path:'shoppingCart',component:ShoppingCartListComponent,canActivate:[AuthAdminGuard]},
+  {path:'shoppingCart/formShoppingCart',component:FormShoppingCartComponent,canActivate:[AuthAdminGuard]},
+  {path:'shoppingCart/formShoppingCart/:carId',component:FormUpdateShoppingCartComponent,canActivate:[AuthAdminGuard]},
   // Normal
   {path:'homeNormal',component:HomeNormalComponent,canActivate:[AuthNormalGuard]},
+  {path:'store',component:StoreComponent,canActivate:[AuthNormalGuard]},
   // Shared
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},

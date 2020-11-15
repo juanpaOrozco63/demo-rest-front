@@ -43,6 +43,10 @@ import { AngularFireModule } from '@angular/fire';
 import { ShoppingProductListComponent } from './components/Admin/home/ShoppingProduct/shopping-product-list/shopping-product-list.component';
 import { FormUpdateShoppingProductComponent } from './components/Admin/home/ShoppingProduct/form-update-shopping-product/form-update-shopping-product.component';
 import { FormShoppingProductComponent } from './components/Admin/home/ShoppingProduct/form-shopping-product/form-shopping-product.component';
+import { ShoppingCartListComponent } from './components/Admin/home/ShoppingCart/shopping-cart-list/shopping-cart-list.component';
+import { FormShoppingCartComponent } from './components/Admin/home/ShoppingCart/form-shopping-cart/form-shopping-cart.component';
+import { FormUpdateShoppingCartComponent } from './components/Admin/home/ShoppingCart/form-update-shopping-cart/form-update-shopping-cart.component';
+import { StoreComponent } from './components/Normal/home/Store/store/store.component';
 
 
 @NgModule({
@@ -67,7 +71,11 @@ import { FormShoppingProductComponent } from './components/Admin/home/ShoppingPr
     NavbarnormalComponent,
     ShoppingProductListComponent,
     FormUpdateShoppingProductComponent,
-    FormShoppingProductComponent
+    FormShoppingProductComponent,
+    ShoppingCartListComponent,
+    FormShoppingCartComponent,
+    FormUpdateShoppingCartComponent,
+    StoreComponent
   ],
   imports: [
     BrowserModule,
