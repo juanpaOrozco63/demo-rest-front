@@ -40,7 +40,7 @@ export class ShoppingCartService {
       })
     );
   }
-  public delete(carId:string):Observable<any>{
+  public delete(carId:number):Observable<any>{
     let headers=this.createTokenHeader();
 
     return this.httClient.delete<any>(this.url+'delete/'+carId,{headers: headers}).pipe(
@@ -72,5 +72,68 @@ export class ShoppingCartService {
        })
     );
 
+  }
+  public createCart(email:string):Observable<any>{
+    let headers=this.createTokenHeader();
+    return this.httClient.get<any>(this.url+'createCart/'+email,{headers:headers}).pipe(
+      catchError(e=>{
+        Swal.fire('Error',`The Shopping card cannot be created ${e}`,'error');
+         return throwError(e);
+       })
+    );
+  }
+  public addProduct(carId:number,proId:string,quantity:number):Observable<any>{
+    let headers=this.createTokenHeader();
+    return this.httClient.get<any>(this.url+'addProduct/'+carId+"/"+proId+"/"+quantity,{headers:headers}).pipe(
+      catchError(e=>{
+        Swal.fire('Error',`Product with proId: ${proId} could not be added in to carId: ${carId} error ${e}`,'error');
+         return throwError(e);
+       })
+    );
+  }
+  public removeProduct(carId:number,proId:number):Observable<any>{
+    let headers=this.createTokenHeader();
+    return this.httClient.delete<any>(this.url+'removeProduct/'+carId+"/"+proId,{headers:headers}).pipe(
+      catchError(e=>{
+        Swal.fire('Error',`Product with proId: ${proId} could not be removen in to carId: ${carId}`,'error');
+         return throwError(e);
+       })
+    );
+  }
+  public clearCart(carId:number):Observable<any>{
+    let headers=this.createTokenHeader();
+    return this.httClient.delete<any>(this.url+'clearCart/'+carId,{headers:headers}).pipe(
+      catchError(e=>{
+        Swal.fire('Error',`Shopping Cart with carId: ${carId} could not remove ${e} `,'error');
+         return throwError(e);
+       })
+    );
+  }
+  public findShoppingProductByShoppingCart(carId:number):Observable<any>{
+    let headers=this.createTokenHeader();
+    return this.httClient.put<any>(this.url+'findShoppingProductByShoppingCart/'+carId,{headers:headers}).pipe(
+      catchError(e=>{
+        Swal.fire('Error',`Shopping Cart with carId: ${carId} don't exist `,'error');
+         return throwError(e);
+       })
+    );
+  }
+  public findCarIdShoppingCartsByEmail(email:string):Observable<any>{
+    let headers=this.createTokenHeader();
+    return this.httClient.get<any>(this.url+'findCarIdShoppingCartsByEmail/'+email,{headers:headers}).pipe(
+      catchError(e=>{
+        Swal.fire('Error',`Shopping Cart with carId: ${e} don't exist `,'error');
+         return throwError(e);
+       })
+    );
+  }
+  public closeShoppingCart(carId:number,payId:number):Observable<any>{
+    let headers=this.createTokenHeader();
+    return this.httClient.get<any>(this.url+'closeShoppingCart/'+carId+"/"+payId,{headers:headers}).pipe(
+      catchError(e=>{
+        Swal.fire('Error',`Shopping Cart with carId: ${carId} don't exist `,'error');
+         return throwError(e);
+       })
+    );
   }
 }

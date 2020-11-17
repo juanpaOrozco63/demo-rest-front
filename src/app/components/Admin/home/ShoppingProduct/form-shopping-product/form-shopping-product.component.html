@@ -57,27 +57,10 @@
 
             </div>
         </div>
-        <div class=" form-group row ">
-            <label class="col-2 col-form-label ">Total</label>
-            <div class="col-8 ">
-
-                <input class="form-control " type="number" placeholder="Total" name="total" [(ngModel)]="shprs.total" required maxlength="255" #total="ngModel">
-                <div class="alert alert-danger p-0" *ngIf="total.invalid && (total.dirty || total.touched)">
-                    <div *ngIf="total.errors.required">
-                        The total is required
-                    </div>
-                    <div *ngIf="total.errors.minlength">
-                        The total must be at least 6 characters
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
         <div class="form-group row ">
             <label class="col-2 col-form-label ">&nbsp;</label>
             <div class="input-group col-md-8 ">
-                <button type="button " class="btn btn-success btn-block " (click)="save()">
+                <button type="button " class="btn btn-success btn-block " (click)="addProduct()">
                         <i class="far fa-save"></i> Save
                     </button>
 

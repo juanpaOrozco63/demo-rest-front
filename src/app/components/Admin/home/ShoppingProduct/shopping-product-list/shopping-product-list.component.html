@@ -21,7 +21,7 @@
                     <th>CarId</th>
                     <th>Quantity</th>
                     <th>Total</th>
-                    <th>Update</th>
+                    <!-- <th>Update</th> -->
                     <th>Delete</th>
             </thead>
             <tbody>
@@ -32,7 +32,7 @@
                     <td>{{shpr.shoppingCartId}}</td>
                     <td>{{shpr.quantity }}</td>
                     <td>{{shpr.total| currency:'COP ' }}</td>
-                    <td class="text-center "><button class="btn btn-primary " type="button" [routerLink]="['/shoppingProduct/formShoppingProduct',shpr.shprId] "><i class="fas fa-pencil-alt " ></i></button></td>
+                    <!-- <td class="text-center "><button class="btn btn-primary " type="button" [routerLink]="['/shoppingProduct/formShoppingProduct',shpr.shprId] "><i class="fas fa-pencil-alt " ></i></button></td> -->
                     <td class="text-center "><button class="btn btn-danger " type="button " (click)="delete(shpr.shprId) "><i class="fas fa-user-minus "></i></button></td>
                 </tr>
             </tbody>

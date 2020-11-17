@@ -26,4 +26,14 @@ export class FormShoppingCartComponent implements OnInit {
       this.route.navigate(['/shoppingCart'])
     });
   }
+  createCart():void{
+    this.shoppingCartService.createCart(this.shoppingCart.customerEmail).subscribe(resp=>{
+      Swal.fire(
+        'Confirmed!',
+        `Your shoppingCart with ${this.shoppingCart.customerEmail} has been create successfull.`,
+        'success'
+      )
+      this.route.navigate(['/shoppingCart'])
+    })
+  }
 }

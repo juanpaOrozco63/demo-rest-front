@@ -26,7 +26,7 @@
             <label class="col-2 col-form-label ">ProId</label>
             <div class="col-8 ">
 
-                <input class="form-control " type="text" placeholder="ProId" name="proId" [(ngModel)]="shprs.productId" required minlength="3" maxlength="255" #proId="ngModel">
+                <input class="form-control " type="text" placeholder="ProId" name="proId" [(ngModel)]="shprs.productId" required minlength="3" maxlength="255" #proId="ngModel" disabled>
                 <div class="alert alert-danger p-0" *ngIf="proId.invalid && (proId.dirty || proId.touched)">
                     <div *ngIf="proId.errors.required">
                         The proId is required
@@ -43,7 +43,7 @@
             <label class="col-2 col-form-label ">CarId</label>
             <div class="col-8 ">
 
-                <input class="form-control " type="number" placeholder="CarId" name="carId" [(ngModel)]="shprs.shoppingCartId" required maxlength="255" #carId="ngModel">
+                <input class="form-control " type="number" placeholder="CarId" name="carId" [(ngModel)]="shprs.shoppingCartId" required maxlength="255" #carId="ngModel" disabled>
                 <div class="alert alert-danger p-0" *ngIf="carId.invalid && (carId.dirty || carId.touched)">
                     <div *ngIf="carId.errors.required">
                         The carId is required
@@ -78,7 +78,7 @@
             <label class="col-2 col-form-label ">Total</label>
             <div class="col-8 ">
 
-                <input class="form-control " type="number" placeholder="Total" name="total" [(ngModel)]="shprs.total" required maxlength="255" #total="ngModel">
+                <input class="form-control " type="number" placeholder="Total" name="total" [(ngModel)]="shprs.total" required maxlength="255" #total="ngModel" disabled>
                 <div class="alert alert-danger p-0" *ngIf="total.invalid && (total.dirty || total.touched)">
                     <div *ngIf="total.errors.required">
                         The total is required

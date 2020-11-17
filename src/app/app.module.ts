@@ -47,6 +47,7 @@ import { ShoppingCartListComponent } from './components/Admin/home/ShoppingCart/
 import { FormShoppingCartComponent } from './components/Admin/home/ShoppingCart/form-shopping-cart/form-shopping-cart.component';
 import { FormUpdateShoppingCartComponent } from './components/Admin/home/ShoppingCart/form-update-shopping-cart/form-update-shopping-cart.component';
 import { StoreComponent } from './components/Normal/home/Store/store/store.component';
+import { PurchaseDetailComponent } from './components/Normal/home/purchase-detail/purchase-detail.component';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { StoreComponent } from './components/Normal/home/Store/store/store.compo
     ShoppingCartListComponent,
     FormShoppingCartComponent,
     FormUpdateShoppingCartComponent,
-    StoreComponent
+    StoreComponent,
+    PurchaseDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,28 @@
+<div class="container mt-5">
+    <h1 class="text-center">Purchase Detail</h1>
+    <div class="table-responsive mt-3">
+        <table class="table table-bordered table-hover text-center mb-4">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Items</th>
+                    <th>Total</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products;  index as i">
+                    <td>{{i+1}}</td>
+                    <td>{{product.productId}}</td>
+                    <td>{{product.total/product.quantity | currency:'COP '}}</td>
+                    <td>{{product.quantity}}</td>
+                    <td>{{product.total | currency:'COP '}}</td>
+                    <td class="text-center "><button class="btn btn-danger " type="button " (click)="delete(product.productId) "><i class="fas fa-trash-alt"></i></button></td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>

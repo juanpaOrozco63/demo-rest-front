@@ -22,8 +22,9 @@
                     <th>Email</th>
                     <th>PayId</th>
                     <th>Enable</th>
-                    <th>Update</th>
+                    <th>Disabled</th>
                     <th>Delete</th>
+                    <th>Clear</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,8 +36,9 @@
                     <td>{{shpcar.customerEmail}}</td>
                     <td>{{shpcar.paymentMethodId}}</td>
                     <td>{{shpcar.enable}}</td>
-                    <td class="text-center "><button class="btn btn-primary " type="button" [routerLink]="['/shoppingCart/formShoppingCart',shpcar.carId]"><i class="fas fa-pencil-alt "></i></button></td>
+                    <td class="text-center "><button class="btn btn-primary " type="button" (click)="disabled(shpcar.carId)"><i class="fas fa-pencil-alt "></i></button></td>
                     <td class="text-center "><button class="btn btn-danger " (click)="delete(shpcar.carId) "><i class="fas fa-user-minus "></i></button></td>
+                    <td class="text-center "><button class="btn btn-warning " (click)="clearCart(shpcar.carId)"><i class="fas fa-trash"></i></button></td>
 
                 </tr>
             </tbody>

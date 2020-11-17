@@ -14,7 +14,6 @@ export class ShoppingCartListComponent implements OnInit {
   id:string;
   pageActual:number=1;
   constructor(public shoppingCartService:ShoppingCartService) { }
-
   ngOnInit(): void {
     this.findAll();
 
@@ -36,7 +35,7 @@ export class ShoppingCartListComponent implements OnInit {
       console.error(error);
     })
   }
-  delete(carId:string):void{
+  delete(carId:number):void{
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -67,4 +66,49 @@ export class ShoppingCartListComponent implements OnInit {
     })
     
   }
+  clearCart(carId:number):void{
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: `Yes, clear cart! ${carId}`
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.shoppingCartService.clearCart(carId).subscribe((rsp)=>{
+         
+          this.findAll();
+        },error=>{
+          Swal.fire(
+            'Error!',
+            `${error.error.error}`,
+            'error'
+          )
+        })
+        Swal.fire(
+          'Clean!',
+          `Your Shopping Cart with carId: ${carId} was cleaned.`,
+          'success'
+        )
+      }
+    })
+    
+     
+    
+  }
+  disabled(carId:number,payId:number=1):void{
+    this.shoppingCartService.closeShoppingCart(carId,payId).subscribe((resp)=>{
+      Swal.fire(
+        'Shopping Cart Disabled!',
+        `Your Shopping Cart with carId: ${carId} was disabled.`,
+        'success'
+      )
+      this.findAll();
+    }
+    )
+
+  }
+
 }

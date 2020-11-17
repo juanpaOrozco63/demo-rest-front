@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { ShoppingCartService } from '../../../services/shopping-cart.service';
+import { ShoppingCart } from '../../../domain/ShoppingCart';
 
 @Component({
   selector: 'app-nav-bar-normal',
@@ -8,10 +10,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-bar-normal.component.css']
 })
 export class NavbarnormalComponent implements OnInit {
+  email:string;
+  public carts:ShoppingCart[];
 
-  constructor(public auth: AngularFireAuth, private route:Router) { }
-
+  constructor(public auth: AngularFireAuth, private route:Router,public shoppingCartService:ShoppingCartService) { }
   ngOnInit(): void {
+   
   }
   ngOnDestroy(): void {
   }
@@ -21,4 +25,5 @@ export class NavbarnormalComponent implements OnInit {
     this.route.navigate(['/login'])
     
   }
+  
 }

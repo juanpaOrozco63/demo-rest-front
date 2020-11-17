@@ -6,62 +6,8 @@
     <hr>
     <form>
         <div class=" form-group row ">
-            <label class="col-2 col-form-label ">CarId</label>
-            <div class="col-8 ">
-
-                <input class="form-control " type="number" placeholder="CarId" name="carId" [(ngModel)]="shoppingCart.carId" required maxlength="255" #carId="ngModel" carId>
-                <div class="alert alert-danger p-0" *ngIf="carId.invalid && (carId.dirty || carId.touched)">
-                    <div *ngIf="carId.errors.required">
-                        The carId is required
-                    </div>
-                    <div *ngIf="carId.errors.minlength">
-                        The carId must be at least 3 characters
-                    </div>
-                    <div *ngIf="carId.errors.carId">
-                        The carId must have a valid format
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class=" form-group row ">
-            <label class="col-2 col-form-label ">Total</label>
-            <div class="col-8 ">
-
-                <input class="form-control " type="number" placeholder="Total" name="total" [(ngModel)]="shoppingCart.total" required maxlength="255" #total="ngModel">
-                <div class="alert alert-danger p-0" *ngIf="total.invalid && (total.dirty || total.touched)">
-                    <div *ngIf="total.errors.required">
-                        The total is required
-                    </div>
-                    <div *ngIf="total.errors.minlength">
-                        The total must be at least 3 characters
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-        <div class=" form-group row ">
-            <label class="col-2 col-form-label ">Items</label>
-            <div class="col-8 ">
-
-                <input class="form-control " type="number" placeholder="Items" name="items" [(ngModel)]="shoppingCart.items" required maxlength="255" #items="ngModel">
-                <div class="alert alert-danger p-0" *ngIf="items.invalid && (items.dirty || items.touched)">
-                    <div *ngIf="items.errors.required">
-                        The items is required
-                    </div>
-                    <div *ngIf="items.errors.minlength">
-                        The items must be at least 4 characters
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-        <div class=" form-group row ">
             <label class="col-2 col-form-label ">Email</label>
             <div class="col-8 ">
-
                 <input class="form-control " type="email" placeholder="Email" name="email" [(ngModel)]="shoppingCart.customerEmail" required minlength="3" maxlength="255" #email="ngModel" email>
                 <div class="alert alert-danger p-0" *ngIf="email.invalid && (email.dirty || email.touched)">
                     <div *ngIf="email.errors.required">
@@ -77,39 +23,11 @@
 
             </div>
         </div>
-        <div class=" form-group row ">
-            <label class="col-2 col-form-label ">PayId</label>
-            <div class="col-8 ">
-
-                <input class="form-control " type="number" placeholder="PayId" name="payId" [(ngModel)]="shoppingCart.paymentMethodId" required maxlength="255" #payId="ngModel">
-                <div class="alert alert-danger p-0" *ngIf="payId.invalid && (payId.dirty || payId.touched)">
-                    <div *ngIf="payId.errors.required">
-                        The payId is required
-                    </div>
-                    <div *ngIf="payId.errors.minlength">
-                        The payId must be at least 6 characters
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-        <div class=" form-group row ">
-            <label class="col-2 col-form-label ">Enable</label>
-            <div class="col-8 ">
-                <select name="" class="custom-select" name="enable" [(ngModel)]="shoppingCart.enable">
-                            <option value="Y">YES</option>
-                            <option value="N">NO</option>    
-                        </select>
-
-
-            </div>
-        </div>
         <div class="form-group row ">
             <label class="col-2 col-form-label ">&nbsp;</label>
             <div class="input-group col-md-8 ">
-                <button type="button " class="btn btn-success btn-block " (click)="save()">
-                        <i class="far fa-save"></i> Save
+                <button type="button " class="btn btn-success btn-block " (click)="createCart()">
+                    <i class="fas fa-shopping-cart"></i> Create
                     </button>
 
             </div>
