@@ -15,7 +15,6 @@ export class CustomerListComponent implements OnInit {
   public title:string='List of Customers';
   public customers:Customer[];
   public clientFirebase: Subscription =new Subscription;
-
   email:string;
   pageActual:number=1;
   userActive:string;

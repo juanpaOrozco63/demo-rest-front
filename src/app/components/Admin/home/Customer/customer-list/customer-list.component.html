@@ -38,7 +38,7 @@
                     <td *ngIf="customer.email!=userActive">{{customer.typeUser}}</td>
                     <td *ngIf="customer.email!=userActive" class="text-center "><button class="btn btn-primary " type="button" [routerLink]="['/customers/formCustomer',customer.email] "><i class="fas fa-pencil-alt " ></i></button></td>
                     <td *ngIf="customer.email!=userActive" class="text-center "><button class="btn btn-danger " type="button " (click)="delete(customer.email) "><i class="fas fa-user-minus "></i></button></td>
-                    <td *ngIf="customer.email!=userActive" class="text-center "><button class="btn btn-warning " [routerLink]="['/customers/recordsAdmin',customer.email]" type="button "><i class="far fa-clipboard"></i></button></td>
+                    <td *ngIf="customer.email!=userActive" class="text-center "><button class="btn btn-warning " [routerLink]="['/customers/recordsPreviewAdmin',customer.email]" type="button "><i class="far fa-clipboard"></i></button></td>
                 </tr>
             </tbody>
 

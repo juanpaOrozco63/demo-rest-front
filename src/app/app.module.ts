@@ -54,6 +54,8 @@ import { StoreComponent } from './components/Normal/home/Store/store/store.compo
 import { RecordListNormalComponent } from './components/Normal/home/record-list-normal/record-list-normal.component';
 // Admin
 import { ProfileAdminComponent } from './components/Admin/home/profile-admin/profile-admin.component';
+import { PreviewRecordListComponent } from './components/Admin/home/preview-record-list/preview-record-list.component';
+import { PreviewRecordListNormalComponent } from './components/Normal/home/preview-record-list-normal/preview-record-list-normal.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +88,9 @@ import { ProfileAdminComponent } from './components/Admin/home/profile-admin/pro
     ProfileComponent,
     RecordListComponent,
     RecordListNormalComponent,
-    ProfileAdminComponent
+    ProfileAdminComponent,
+    PreviewRecordListComponent,
+    PreviewRecordListNormalComponent
     
   ],
   imports: [

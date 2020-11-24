@@ -139,4 +139,13 @@ export class ShoppingCartService {
        })
     );
   }
+  public selectPurchase(email:string):Observable<any>{
+    let headers=this.createTokenHeader();
+    return this.httClient.get<any>(this.url+'selectPurchase/'+email,{headers:headers}).pipe(
+      catchError(e=>{
+        Swal.fire('Error',`Shopping Cart with email: ${email} don't exist `,'error');
+         return throwError(e);
+       })
+    );
+  }
 }

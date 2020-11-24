@@ -26,6 +26,8 @@ import { ProfileComponent } from './components/Normal/home/profile/profile.compo
 import { RecordListComponent } from './components/Admin/home/Customer/record-list/record-list.component';
 import { RecordListNormalComponent } from './components/Normal/home/record-list-normal/record-list-normal.component';
 import { ProfileAdminComponent } from './components/Admin/home/profile-admin/profile-admin.component';
+import { PreviewRecordListComponent } from './components/Admin/home/preview-record-list/preview-record-list.component';
+import { PreviewRecordListNormalComponent } from './components/Normal/home/preview-record-list-normal/preview-record-list-normal.component';
 
 export const ROUTES: Routes = [
   // Admin
@@ -45,14 +47,16 @@ export const ROUTES: Routes = [
   {path:'shoppingCart',component:ShoppingCartListComponent,canActivate:[AuthAdminGuard]},
   {path:'shoppingCart/formShoppingCart',component:FormShoppingCartComponent,canActivate:[AuthAdminGuard]},
   {path:'shoppingCart/formShoppingCart/:carId',component:FormUpdateShoppingCartComponent,canActivate:[AuthAdminGuard]},
-  {path:'customers/recordsAdmin/:email',component:RecordListComponent,canActivate:[AuthAdminGuard]},
+  {path:'customers/recordsAdmin/:email/:carId',component:RecordListComponent,canActivate:[AuthAdminGuard]},
+  {path:'customers/recordsPreviewAdmin/:email',component:PreviewRecordListComponent,canActivate:[AuthAdminGuard]},
   {path:'profileAdmin',component:ProfileAdminComponent,canActivate:[AuthAdminGuard]},
   // Normal
   {path:'homeNormal',component:HomeNormalComponent,canActivate:[AuthNormalGuard]},
   {path:'store',component:StoreComponent,canActivate:[AuthNormalGuard]},
   {path:'purchaseDetail/:email',component:PurchaseDetailComponent,canActivate:[AuthNormalGuard]},
   {path:'profileNormal',component:ProfileComponent,canActivate:[AuthNormalGuard]},
-  {path:'recordsNormal',component:RecordListNormalComponent,canActivate:[AuthNormalGuard]},
+  {path:'recordsPreviewNormal/recordsNormal/:email/:carId',component:RecordListNormalComponent,canActivate:[AuthNormalGuard]},
+  {path:'recordsPreviewNormal',component:PreviewRecordListNormalComponent,canActivate:[AuthNormalGuard]},
   // Shared
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
