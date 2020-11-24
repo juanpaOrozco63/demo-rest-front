@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { CustomerService } from '../../../../../services/customer.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer-list',
@@ -18,7 +19,7 @@ export class CustomerListComponent implements OnInit {
   email:string;
   pageActual:number=1;
   userActive:string;
-  constructor(public customerService:CustomerService,public auth: AngularFireAuth) { }
+  constructor(public customerService:CustomerService,public auth: AngularFireAuth,public route:Router) { }
 
   ngOnInit(): void {
     this.findAll();
@@ -81,5 +82,6 @@ export class CustomerListComponent implements OnInit {
     })
     
   }
+  
 
 }

@@ -6,6 +6,9 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { ShoppingCart } from '../domain/ShoppingCart';
+import { Email } from '../domain/email';
+import { AddShoppingProduct } from '../domain/add-shopping-product';
+import { CloseShoppingCart } from '../domain/close-shopping-cart';
 
 @Injectable({
   providedIn: 'root'
@@ -51,10 +54,10 @@ export class ShoppingCartService {
     );
 
   }
-  public save(carId:ShoppingCart):Observable<any>{
+  public save(shoppingCart:ShoppingCart):Observable<any>{
     let headers=this.createTokenHeader();
 
-    return this.httClient.post<any>(this.url+'save',carId,{headers: headers}).pipe(
+    return this.httClient.post<any>(this.url+'save',shoppingCart,{headers: headers}).pipe(
       catchError(e=>{
         Swal.fire('Error',`${e}`,'error');
          return throwError(e);
@@ -62,31 +65,31 @@ export class ShoppingCartService {
     );
 
   }
-  public update(carId:ShoppingCart):Observable<any>{
+  public update(shoppingCart:ShoppingCart):Observable<any>{
     let headers=this.createTokenHeader();
 
-    return this.httClient.put<any>(this.url+'update',carId,{headers: headers}).pipe(
+    return this.httClient.put<any>(this.url+'update',shoppingCart,{headers: headers}).pipe(
       catchError(e=>{
-        Swal.fire('Error',`Shopping Cart with ${carId.carId} don't exist`,'error');
+        Swal.fire('Error',`Shopping Cart with ${shoppingCart.carId} don't exist`,'error');
          return throwError(e);
        })
     );
 
   }
-  public createCart(email:string):Observable<any>{
+  public createCart(email:Email):Observable<any>{
     let headers=this.createTokenHeader();
-    return this.httClient.get<any>(this.url+'createCart/'+email,{headers:headers}).pipe(
+    return this.httClient.post<any>(this.url+'createCart',email,{headers:headers}).pipe(
       catchError(e=>{
         Swal.fire('Error',`The Shopping card cannot be created ${e}`,'error');
          return throwError(e);
        })
     );
   }
-  public addProduct(carId:number,proId:string,quantity:number):Observable<any>{
+  public addProduct(shoppingProduct:AddShoppingProduct):Observable<any>{
     let headers=this.createTokenHeader();
-    return this.httClient.get<any>(this.url+'addProduct/'+carId+"/"+proId+"/"+quantity,{headers:headers}).pipe(
+    return this.httClient.post<any>(this.url+'addProduct',shoppingProduct,{headers:headers}).pipe(
       catchError(e=>{
-        Swal.fire('Error',`Product with proId: ${proId} could not be added in to carId: ${carId} error ${e}`,'error');
+        Swal.fire('Error',`Product with proId: ${shoppingProduct.proId} could not be added in to carId: ${shoppingProduct.carId} error ${e}`,'error');
          return throwError(e);
        })
     );
@@ -111,7 +114,7 @@ export class ShoppingCartService {
   }
   public findShoppingProductByShoppingCart(carId:number):Observable<any>{
     let headers=this.createTokenHeader();
-    return this.httClient.put<any>(this.url+'findShoppingProductByShoppingCart/'+carId,{headers:headers}).pipe(
+    return this.httClient.get<any>(this.url+'findShoppingProductByShoppingCart/'+carId,{headers:headers}).pipe(
       catchError(e=>{
         Swal.fire('Error',`Shopping Cart with carId: ${carId} don't exist `,'error');
          return throwError(e);
@@ -127,11 +130,11 @@ export class ShoppingCartService {
        })
     );
   }
-  public closeShoppingCart(carId:number,payId:number):Observable<any>{
+  public closeShoppingCart(cartClose:CloseShoppingCart):Observable<any>{
     let headers=this.createTokenHeader();
-    return this.httClient.get<any>(this.url+'closeShoppingCart/'+carId+"/"+payId,{headers:headers}).pipe(
+    return this.httClient.put<any>(this.url+'closeShoppingCart',cartClose,{headers:headers}).pipe(
       catchError(e=>{
-        Swal.fire('Error',`Shopping Cart with carId: ${carId} don't exist `,'error');
+        Swal.fire('Error',`Shopping Cart with carId: ${cartClose.carId} don't exist `,'error');
          return throwError(e);
        })
     );

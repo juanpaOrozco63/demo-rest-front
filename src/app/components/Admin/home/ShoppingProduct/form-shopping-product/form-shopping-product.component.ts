@@ -4,6 +4,7 @@ import { ShoppingProductService } from '../../../../../services/shopping-product
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ShoppingCartService } from '../../../../../services/shopping-cart.service';
+import { AddShoppingProduct } from '../../../../../domain/add-shopping-product';
 
 @Component({
   selector: 'app-form-shopping-product',
@@ -13,6 +14,7 @@ import { ShoppingCartService } from '../../../../../services/shopping-cart.servi
 export class FormShoppingProductComponent implements OnInit {
   title:string='New Shopping Product';
   shprs = new shoppingProductModel();
+  public shoppingProduct:AddShoppingProduct= new AddShoppingProduct(null,null,null);
   constructor(private ShoppingProductService:ShoppingProductService,private route:Router,private shoppingCartService:ShoppingCartService) { }
 
   ngOnInit(): void {
@@ -28,10 +30,14 @@ export class FormShoppingProductComponent implements OnInit {
     }); 
   }
   addProduct():void{
-    this.shoppingCartService.addProduct(this.shprs.shoppingCartId,this.shprs.productId,this.shprs.quantity).subscribe((rsp)=>{
+    this.shoppingProduct.carId=this.shprs.shoppingCartId;
+    this.shoppingProduct.proId=this.shprs.productId;
+    this.shoppingProduct.quantity=this.shprs.quantity;
+
+    this.shoppingCartService.addProduct(this.shoppingProduct).subscribe((rsp)=>{
       Swal.fire(
         'New Shopping Product',
-        `The product ${this.shprs.productId} was add success in the shoppingCart with carId: ${this.shprs.shoppingCartId}`,
+        `The product ${this.shprs.productId} was add success in the shoppingCart with carId: ${this.shoppingProduct.carId}`,
         'success'
       );
       this.route.navigate(['/shoppingProduct'])

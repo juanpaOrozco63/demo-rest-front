@@ -9,61 +9,36 @@
         <h1 class="text-center  mb-0 " id="title">
             <span class="badge badge-secondary ">Products</span></h1>
     </div>
-    <div class="row">
 
-        <div class="col-md-2 col-xl-1 col-sm-1 col-lg-1 text-center">
-            <aside class="col">
-                <h4 class=" mt-3 text-center">Filters</h4>
-                <div class="col-md-6">
-                    <h1 class="mt-5 text-center">-</h1>
-                </div>
-                <div class="col-md-6">
-                    <h1 class="mt-5 text-center">-</h1>
-                </div>
-                <div class="col-md-6">
-                    <h1 class="mt-5 text-center">-</h1>
-                </div>
-                <div class="col-md-6">
-                    <h1 class="mt-5 text-center">-</h1>
-                </div>
-                <div class="col-md-6">
-                    <h1 class="mt-5 text-center">-</h1>
-                </div>
+    <div class="col-xl-12 col-md-12 col-sm-12 col-lg-12">
 
-
-            </aside>
-        </div>
-
-        <div class="col-xl-11 col-md-10 col-sm-11 col-lg-11">
-
-            <div class="row no-gutters">
-                <div class="col-md-5 m-4 col-sm-11 col-lg-3 col-xl-3" *ngFor="let product of products">
-                    <div class="card " style="width: 18rem;" *ngIf="product.enable==='Y'">
-                        <h6 class="m-2"><span class="badge badge-danger ">New</span></h6>
-                        <img src={{[product.image]}} class="card-img-top img-fluid p-3">
-                        <div class="card-body">
-                            <h4 class="card-title"> <b> {{product.name}}</b></h4>
-                            <p class="card-text"> <b>Detail:</b> {{product.detail}}</p>
-                            <p class="card-text"> <b></b> {{product.price | currency:'COP '}}</p>
-                            <form>
-                                <div class="form-group row">
-                                    <div class="col-8">
-                                        <button (click)="addProduct(product.proId,product.name)" class="card-link btn btn-block btn-success" type="button"><i class="fas fa-shopping-cart"> Buy now</i></button>
-                                    </div>
-                                    <div class="col-4">
-                                        <input class="form-control" [(ngModel)]="quantity" type="number" name="quantity">
-
-                                    </div>
+        <div class="row no-gutters">
+            <div class="col-md-5 m-4 col-sm-11 col-lg-3 col-xl-3" *ngFor="let product of products">
+                <div class="card " style="width: 18rem;" *ngIf="product.enable==='Y'">
+                    <h6 class="m-2"><span class="badge badge-danger ">New</span></h6>
+                    <img src={{[product.image]}} class="card-img-top img-fluid p-3">
+                    <div class="card-body">
+                        <h4 class="card-title"> <b> {{product.name}}</b></h4>
+                        <p class="card-text"> <b>Detail:</b> {{product.detail}}</p>
+                        <p class="card-text"> <b></b> {{product.price | currency:'COP '}}</p>
+                        <form>
+                            <div class="form-group row">
+                                <div class="col-8">
+                                    <button (click)="addProduct(product.proId,product.name)" class="card-link btn btn-block btn-success" type="button"><i class="fas fa-shopping-cart"> Buy now</i></button>
                                 </div>
-                            </form>
+                                <div class="col-4">
+                                    <input class="form-control" [(ngModel)]="quantity" type="number" name="quantity">
+
+                                </div>
+                            </div>
+                        </form>
 
 
-                        </div>
                     </div>
                 </div>
-
             </div>
 
         </div>
+
     </div>
 </div>

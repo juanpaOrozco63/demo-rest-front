@@ -13,7 +13,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let product of products;  index as i">
+                <tr *ngFor="let product of products2| paginate: { itemsPerPage: 5, currentPage: pageActual} ; let i = index  ">
                     <td>{{i+1}}</td>
                     <td>{{product.productId}}</td>
                     <td>{{product.total/product.quantity | currency:'COP '}}</td>
@@ -24,5 +24,85 @@
             </tbody>
 
         </table>
+
     </div>
+    <pagination-controls class="text-center" (pageChange)="pageActual=$event"></pagination-controls>
+
+    <form>
+        <div class=" form-group row ">
+            <label class="col-2 col-form-label ">Card Number</label>
+            <div class="col-10 ">
+
+                <input class="form-control " type="text" placeholder="Card Number" name="cardNumber" [(ngModel)]="purchase.cardNumber" required minlength="16" maxlength="19" #cardNumber="ngModel">
+                <div class="alert alert-danger p-0" *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)">
+                    <div *ngIf="cardNumber.errors.required">
+                        The cardNumber is required
+                    </div>
+                    <div *ngIf="cardNumber.errors.minlength">
+                        The cardNumber must be at least 16 characters
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class=" form-group row ">
+            <label class="col-2 col-form-label ">Card Type</label>
+            <div class="col-10">
+                <select name="" class="custom-select" name="cardType" [(ngModel)]="purchase.cardType" #cardType="ngModel" required>
+                            <option *ngFor="let payment of payments" value="{{payment.payId}}">{{payment.name}}</option>
+                        </select>
+                <div class="alert alert-danger p-0" *ngIf="cardType.invalid && (cardType.dirty || cardType.touched)">
+                    <div *ngIf="cardType.errors.required">
+                        The cardType is required
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+        <div class=" form-group row ">
+            <label class="col-2 col-form-label ">Expiration Date</label>
+            <div class="col-10 ">
+                <input class="form-control " type="date" name="expirationDate" [(ngModel)]="purchase.expirationDate" required #expirationDate="ngModel">
+                <div class="alert alert-danger p-0" *ngIf="expirationDate.invalid && (expirationDate.dirty || expirationDate.touched)">
+                    <div *ngIf="expirationDate.errors.required">
+                        The expirationDate is required
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class=" form-group row ">
+            <label class="col-2 col-form-label ">CVV</label>
+            <div class="col-10 ">
+
+                <input class="form-control " type="password" placeholder="CVV" name="cvv" [(ngModel)]="purchase.password" required minlength="4" maxlength="4" #cvv="ngModel">
+                <div class="alert alert-danger p-0" *ngIf="cvv.invalid && (cvv.dirty || cvv.touched)">
+                    <div *ngIf="cvv.errors.required">
+                        The cvv is required
+                    </div>
+                    <div *ngIf="cvv.errors.minlength">
+                        The cvv must be at least 4 characters
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="form-group row ">
+            <label class="col-2 col-form-label ">&nbsp;</label>
+            <div class="input-group col-md-10 ">
+                <button class="btn btn-block btn-success" (click)="closePurchase()">Finish Purchase</button>
+
+            </div>
+        </div>
+    </form>
+
 </div>

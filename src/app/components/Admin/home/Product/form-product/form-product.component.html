@@ -9,7 +9,7 @@
             <label class="col-2 col-form-label ">ProId</label>
             <div class="col-8 ">
 
-                <input class="form-control " type="text " placeholder="ProId" name="proId" [(ngModel)]="product.proId" required minlength="3" maxlength="255" #proId="ngModel">
+                <input class="form-control " type="text " placeholder="ProId" name="proId" [(ngModel)]="product.proId" required minlength="4" maxlength="255" #proId="ngModel">
                 <div class="alert alert-danger p-0" *ngIf="proId.invalid && (proId.dirty || proId.touched)">
                     <div *ngIf="proId.errors.required">
                         The proId is required

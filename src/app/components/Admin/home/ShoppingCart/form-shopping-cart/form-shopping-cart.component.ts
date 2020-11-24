@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { shoppingCartModel } from '../../../../../models/shoppingCart.model';
 import { ShoppingCartService } from '../../../../../services/shopping-cart.service';
 import Swal from 'sweetalert2';
+import { Email } from '../../../../../domain/email';
 @Component({
   selector: 'app-form-shopping-cart',
   templateUrl: './form-shopping-cart.component.html',
@@ -11,6 +12,7 @@ import Swal from 'sweetalert2';
 export class FormShoppingCartComponent implements OnInit {
   title: string = 'New Shopping Cart';
   shoppingCart = new shoppingCartModel();
+  public createCartEmail:Email=new Email(null);
 
   constructor(private route:Router,private shoppingCartService:ShoppingCartService) { }
 
@@ -27,10 +29,11 @@ export class FormShoppingCartComponent implements OnInit {
     });
   }
   createCart():void{
-    this.shoppingCartService.createCart(this.shoppingCart.customerEmail).subscribe(resp=>{
+    this.createCartEmail.email=this.shoppingCart.customerEmail;
+    this.shoppingCartService.createCart( this.createCartEmail).subscribe(resp=>{
       Swal.fire(
         'Confirmed!',
-        `Your shoppingCart with ${this.shoppingCart.customerEmail} has been create successfull.`,
+        `Your shoppingCart with ${this.createCartEmail.email} has been create successfull.`,
         'success'
       )
       this.route.navigate(['/shoppingCart'])

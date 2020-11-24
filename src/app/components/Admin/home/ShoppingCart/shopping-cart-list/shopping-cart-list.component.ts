@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShoppingCart } from '../../../../../domain/ShoppingCart';
 import { ShoppingCartService } from '../../../../../services/shopping-cart.service';
 import Swal from 'sweetalert2';
+import { CloseShoppingCart } from '../../../../../domain/close-shopping-cart';
 
 @Component({
   selector: 'app-shopping-cart-list',
@@ -12,6 +13,7 @@ export class ShoppingCartListComponent implements OnInit {
   public title:string='List of Shopping Cart';
   public shpcars:ShoppingCart[];
   id:string;
+  public cartClose:CloseShoppingCart= new CloseShoppingCart(null,null);
   pageActual:number=1;
   constructor(public shoppingCartService:ShoppingCartService) { }
   ngOnInit(): void {
@@ -99,10 +101,13 @@ export class ShoppingCartListComponent implements OnInit {
     
   }
   disabled(carId:number,payId:number=1):void{
-    this.shoppingCartService.closeShoppingCart(carId,payId).subscribe((resp)=>{
+    this.cartClose.carId=carId;
+    this.cartClose.payId=payId;
+    console.log(this.cartClose);
+    this.shoppingCartService.closeShoppingCart(this.cartClose).subscribe((resp)=>{
       Swal.fire(
         'Shopping Cart Disabled!',
-        `Your Shopping Cart with carId: ${carId} was disabled.`,
+        `Your Shopping Cart with carId: ${this.cartClose.carId} now has payment method with payId: ${this.cartClose.payId}.`,
         'success'
       )
       this.findAll();

@@ -22,6 +22,10 @@ import { FormShoppingCartComponent } from './components/Admin/home/ShoppingCart/
 import { FormUpdateShoppingCartComponent } from './components/Admin/home/ShoppingCart/form-update-shopping-cart/form-update-shopping-cart.component';
 import { StoreComponent } from './components/Normal/home/Store/store/store.component';
 import { PurchaseDetailComponent } from './components/Normal/home/purchase-detail/purchase-detail.component';
+import { ProfileComponent } from './components/Normal/home/profile/profile.component';
+import { RecordListComponent } from './components/Admin/home/Customer/record-list/record-list.component';
+import { RecordListNormalComponent } from './components/Normal/home/record-list-normal/record-list-normal.component';
+import { ProfileAdminComponent } from './components/Admin/home/profile-admin/profile-admin.component';
 
 export const ROUTES: Routes = [
   // Admin
@@ -41,10 +45,14 @@ export const ROUTES: Routes = [
   {path:'shoppingCart',component:ShoppingCartListComponent,canActivate:[AuthAdminGuard]},
   {path:'shoppingCart/formShoppingCart',component:FormShoppingCartComponent,canActivate:[AuthAdminGuard]},
   {path:'shoppingCart/formShoppingCart/:carId',component:FormUpdateShoppingCartComponent,canActivate:[AuthAdminGuard]},
+  {path:'customers/recordsAdmin/:email',component:RecordListComponent,canActivate:[AuthAdminGuard]},
+  {path:'profileAdmin',component:ProfileAdminComponent,canActivate:[AuthAdminGuard]},
   // Normal
   {path:'homeNormal',component:HomeNormalComponent,canActivate:[AuthNormalGuard]},
   {path:'store',component:StoreComponent,canActivate:[AuthNormalGuard]},
   {path:'purchaseDetail/:email',component:PurchaseDetailComponent,canActivate:[AuthNormalGuard]},
+  {path:'profileNormal',component:ProfileComponent,canActivate:[AuthNormalGuard]},
+  {path:'recordsNormal',component:RecordListNormalComponent,canActivate:[AuthNormalGuard]},
   // Shared
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},

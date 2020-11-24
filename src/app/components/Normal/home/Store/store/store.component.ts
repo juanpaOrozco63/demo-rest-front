@@ -6,6 +6,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { ShoppingCart } from '../../../../../domain/ShoppingCart';
 import Swal from 'sweetalert2';
 import { Subscription } from 'rxjs';
+import { AddShoppingProduct } from '../../../../../domain/add-shopping-product';
+import { Email } from '../../../../../domain/email';
+import { shoppingProductModel } from '../../../../../models/shoppingProduct.model';
 
 @Component({
   selector: 'app-store',
@@ -15,11 +18,14 @@ import { Subscription } from 'rxjs';
 export class StoreComponent implements OnInit {
   public products:Product[];
   public clientFirebase: Subscription =new Subscription;
+  public shoppingProduct:AddShoppingProduct;
+  public creatCartEmail:Email= new Email(null);
   email:string;
   totalItems:number=0;
   quantity:number=1;
   carId:number;
   public carts:ShoppingCart[];
+
   constructor(public productService:ProductService,public shoppingCartService:ShoppingCartService,public auth: AngularFireAuth) { }
   ngOnDestroy(): void {
     this.clientFirebase.unsubscribe();
@@ -40,13 +46,17 @@ export class StoreComponent implements OnInit {
     })
   } 
   addProduct(proId:string,product:string):void{
+    this.shoppingProduct=new AddShoppingProduct(null,null,null);
     this.shoppingCartService.findCarIdShoppingCartsByEmail(this.email).subscribe(resp=>{
     this.carts=resp;
       this.carts.forEach(car => {
-        if(car.enable==='Y'){
+        if(car.enable==='Y' && car.paymentMethodId===null){
            this.carId =car.carId; 
-          this.shoppingCartService.addProduct(this.carId,proId,this.quantity).subscribe((resp)=>{
-            
+           this.shoppingProduct.carId=car.carId;
+           this.shoppingProduct.proId=proId;
+           this.shoppingProduct.quantity=this.quantity;
+          this.shoppingCartService.addProduct(this.shoppingProduct).subscribe((resp)=>{
+
           })
         }
       });
@@ -64,7 +74,7 @@ export class StoreComponent implements OnInit {
     this.shoppingCartService.findCarIdShoppingCartsByEmail(this.email).subscribe(resp=>{
       this.carts=resp;
         this.carts.forEach(car => {
-          if(car.enable==='Y'){
+          if(car.enable==='Y' && car.paymentMethodId===null){
           this.totalItems=car.items;
           }
         });
@@ -76,7 +86,8 @@ export class StoreComponent implements OnInit {
       this.shoppingCartService.findCarIdShoppingCartsByEmail(this.email).subscribe(x=>{
         this.carts=x;
         if(this.carts===null){
-          this.shoppingCartService.createCart(this.email).subscribe(resp=>{
+          this.creatCartEmail.email=this.email;
+          this.shoppingCartService.createCart(this.creatCartEmail).subscribe(resp=>{
             setTimeout(() => {
               this.itemsShoppingCart();
             }, 300);
@@ -84,7 +95,7 @@ export class StoreComponent implements OnInit {
         }else{
           setTimeout(() => {
             this.carts.forEach(car=>{
-              if(car.enable==='Y'){
+              if(car.enable==='Y' && car.paymentMethodId===null){
                 setTimeout(() => {
                   this.itemsShoppingCart();
                   validate=true;
@@ -95,16 +106,17 @@ export class StoreComponent implements OnInit {
             )
             setTimeout(() => {
               if(validate===false){
-                this.shoppingCartService.createCart(this.email).subscribe(resp=>{
+                this.creatCartEmail.email=this.email;
+                this.shoppingCartService.createCart(this.creatCartEmail).subscribe(resp=>{
                   setTimeout(() => {
                     this.itemsShoppingCart();
-                  }, 300);
+                  }, 500);
                 }) 
               
             }
-            }, 300);
+            }, 500);
             
-          }, 500);
+          }, 700);
         }
  
         
