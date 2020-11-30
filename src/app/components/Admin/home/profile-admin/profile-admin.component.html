@@ -1,1 +1,45 @@
-<p>profile-admin works!</p>
+<div class="container">
+    <h1 class="text-center mt-5">My Profile</h1>
+    <div class="text-center">
+        <img src="https://www.asf.com.mx/Imagenes/Login.png">
+    </div>
+    <hr>
+    <form>
+        <div class=" form-group row ">
+            <label class="col-2 col-form-label" for="">Email:</label>
+            <div class="col-10 ">
+                <input class="form-control " type="email " placeholder="Email" name="email" [(ngModel)]="customer.email" required minlength="3" maxlength="255" #email="ngModel" disabled email>
+            </div>
+        </div>
+        <div class=" form-group row ">
+            <label class="col-2 col-form-label" for="">Name:</label>
+            <div class="col-10 ">
+                <input class="form-control " type="text" placeholder="Name" name="name" [(ngModel)]="customer.name" required minlength="3" maxlength="255" #name="ngModel">
+            </div>
+        </div>
+        <div class=" form-group row ">
+            <label class="col-2 col-form-label" for="">Adress:</label>
+            <div class="col-10 ">
+                <input class="form-control " type="text" placeholder="Address" name="address" [(ngModel)]="customer.address" required minlength="3" maxlength="255" #address="ngModel">
+            </div>
+        </div>
+        <div class=" form-group row ">
+            <label class="col-2 col-form-label" for="">Phone:</label>
+            <div class="col-10 ">
+                <input class="form-control " type="text" placeholder="Phone" name="phone" [(ngModel)]="customer.phone" required minlength="3" maxlength="255" #phone="ngModel">
+            </div>
+        </div>
+
+        <div class="form-group row ">
+            <label class="col-2 col-form-label ">&nbsp;</label>
+            <div class="input-group col-md-10        ">
+                <button type="button " class="btn btn-info btn-block " (click)="update()">
+                        <i class="far fa-save"></i> Update Customer
+                    </button>
+
+            </div>
+
+        </div>
+    </form>
+
+</div>

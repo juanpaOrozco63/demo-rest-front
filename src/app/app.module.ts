@@ -56,6 +56,7 @@ import { RecordListNormalComponent } from './components/Normal/home/record-list-
 import { ProfileAdminComponent } from './components/Admin/home/profile-admin/profile-admin.component';
 import { PreviewRecordListComponent } from './components/Admin/home/preview-record-list/preview-record-list.component';
 import { PreviewRecordListNormalComponent } from './components/Normal/home/preview-record-list-normal/preview-record-list-normal.component';
+import { RestorePasswordComponent } from './components/shared/restore-password/restore-password.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { PreviewRecordListNormalComponent } from './components/Normal/home/previ
     RecordListNormalComponent,
     ProfileAdminComponent,
     PreviewRecordListComponent,
-    PreviewRecordListNormalComponent
+    PreviewRecordListNormalComponent,
+    RestorePasswordComponent
     
   ],
   imports: [

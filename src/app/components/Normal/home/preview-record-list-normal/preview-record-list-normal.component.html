@@ -22,7 +22,7 @@
                     <td>{{carts.items}}</td>
                     <td>{{carts.total | currency:'COP '}}</td>
 
-                    <td class="text-center "><button class="btn btn-info " [routerLink]="['/recordsPreviewNormal/recordsNormal',email,carts.carId]" type="button "><i class="far fa-eye"></i></button></td>
+                    <td class="text-center "><button class="btn btn-info " [routerLink]="['/recordsPreviewNormal/recordsNormal',email,carts.carId,carts.total]" type="button "><i class="far fa-eye"></i></button></td>
                 </tr>
             </tbody>
 

@@ -19,6 +19,7 @@ export class RecordListNormalComponent implements OnInit {
   email:string=null;
   carId:number=null;
   title:string='Invoice';
+  total:number=null;
   constructor(
     public shoppingProductService:ShoppingProductService,public shoppingCartService:ShoppingCartService,private routActive:ActivatedRoute
   ) {}
@@ -28,7 +29,9 @@ export class RecordListNormalComponent implements OnInit {
   loadCustomer():void{
     this.routActive.params.subscribe(resp=>{
        this.email =resp['email'];
-       this.carId=resp['carId']
+       this.carId=resp['carId'];
+       this.total=resp['total'];
+
      
     })
   }

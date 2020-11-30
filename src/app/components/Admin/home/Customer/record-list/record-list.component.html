@@ -3,6 +3,12 @@
         {{title}}
     </h1>
     <hr>
+    <div class="text-right mb-4">
+        <h5> <b> Total Invoice:</b> {{total | currency:' COP '}}
+        </h5>
+    </div>
+
+
     <div class="table-responsive">
         <table class="table table-bordered table-hover text-center mb-4">
             <thead class="thead-dark">
@@ -37,6 +43,5 @@
         </table>
     </div>
     <pagination-controls class="text-center " (pageChange)="pageActual=$event"></pagination-controls>
-
 
 </div>

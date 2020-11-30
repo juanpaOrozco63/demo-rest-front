@@ -15,6 +15,7 @@ export class RecordListComponent implements OnInit {
   pageActual:number=1;
   email:string=null;
   carId:number=null;
+  total:number=null;
   constructor(public shoppingProductService:ShoppingProductService,public shoppingCartService:ShoppingCartService,private routActive:ActivatedRoute) { }
   title:string='Invoice';
   ngOnInit(): void {
@@ -23,7 +24,8 @@ export class RecordListComponent implements OnInit {
   loadCustomer():void{
     this.routActive.params.subscribe(resp=>{
        this.email =resp['email'];
-       this.carId=resp['carId']
+       this.carId=resp['carId'];
+       this.total=resp['total'];
      
     })
   }
