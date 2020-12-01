@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit,OnDestroy {
   public clientUser: Subscription =new Subscription;
   public user = new userModel;
   public userToken:User;
+  enable:string=null;
   constructor(private router:Router,public auth: AngularFireAuth,
   public authService:AuthService,public customerService:CustomerService) { }
 
@@ -39,6 +40,13 @@ export class LoginComponent implements OnInit,OnDestroy {
       this.findById(this.user.email);
       this.clientFirebase=this.auth.user.subscribe(userFirebase=>{
         this.userToken= new User("","");
+        if(this.enable==='N'){
+          Swal.fire(
+            `This client is not enable`,
+            `Error`,
+            'error'
+          );
+        }else if(this.enable==='Y'){
         if(userFirebase.emailVerified===false){
           Swal.fire(
             `You need verify your email`,
@@ -54,7 +62,7 @@ export class LoginComponent implements OnInit,OnDestroy {
               localStorage.setItem("token",data.token);
               Swal.fire(
                 `Welcome`,
-                `Normal ${this.user.email}`,
+                `${this.user.email}`,
                 'success'
               );
               this.router.navigate(['/homeNormal']);
@@ -64,7 +72,7 @@ export class LoginComponent implements OnInit,OnDestroy {
               localStorage.setItem("token",data.token);
               Swal.fire(
                 `Welcome`,
-                `Admin ${this.user.email}`,
+                `${this.user.email}`,
                 'success'
               );
               this.router.navigate(['/homeAdmin']);
@@ -81,7 +89,7 @@ export class LoginComponent implements OnInit,OnDestroy {
           );
         })
         }
-
+      }
         
       },catchError=>{
         console.warn(catchError);
@@ -104,7 +112,8 @@ export class LoginComponent implements OnInit,OnDestroy {
   }
   findById(email:string):void{
     this.clientFindById=this.customerService.findById(email).subscribe(data=>{
-      localStorage.setItem("type",data.typeUser);
+      this.enable=data.enable;
+        localStorage.setItem("type",data.typeUser);
     },error=>{
       console.error(error);
     })

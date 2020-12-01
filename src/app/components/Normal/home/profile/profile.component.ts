@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class ProfileComponent implements OnInit {
   customer = new customerModel();
+  
   constructor(
     public auth: AngularFireAuth,
     public customerService: CustomerService,
@@ -25,6 +26,9 @@ export class ProfileComponent implements OnInit {
       this.customer.email = userFirebase.email;
       this.findById(this.customer.email);
     });
+  }
+  ngOnDestroy(): void {
+    this.clientFirebase.unsubscribe();
   }
   update() {
     this.customerService.update(this.customer).subscribe((rsp) => {

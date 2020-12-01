@@ -21,6 +21,9 @@ export class ProfileAdminComponent implements OnInit {
       this.findById(this.customer.email);
    })
   }
+  ngOnDestroy(): void {
+    this.clientFirebase.unsubscribe();
+  } 
   update(){
     this.customerService.update(this.customer).subscribe((rsp)=>{
       this.route.navigate(['/profileAdmin'])
