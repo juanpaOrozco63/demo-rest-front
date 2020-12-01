@@ -40,13 +40,6 @@ export class LoginComponent implements OnInit,OnDestroy {
       this.findById(this.user.email);
       this.clientFirebase=this.auth.user.subscribe(userFirebase=>{
         this.userToken= new User("","");
-        if(this.enable==='N'){
-          Swal.fire(
-            `This client is not enable`,
-            `Error`,
-            'error'
-          );
-        }else if(this.enable==='Y'){
         if(userFirebase.emailVerified===false){
           Swal.fire(
             `You need verify your email`,
@@ -89,7 +82,7 @@ export class LoginComponent implements OnInit,OnDestroy {
           );
         })
         }
-      }
+    
         
       },catchError=>{
         console.warn(catchError);
