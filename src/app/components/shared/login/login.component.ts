@@ -37,16 +37,22 @@ export class LoginComponent implements OnInit,OnDestroy {
   }
   public signIn():void{
     this.auth.signInWithEmailAndPassword(this.user.email,this.user.password).then(resp=>{
-      this.findById(this.user.email);
+      Swal.fire(
+        `Loading`,
+        `wait`,
+        'info'
+      );
+       this.findById(this.user.email);
+       setTimeout(() => {
       this.clientFirebase=this.auth.user.subscribe(userFirebase=>{
         this.userToken= new User("","");
-        if(userFirebase.emailVerified===false){
+        if(userFirebase.emailVerified===false || this.enable==='N'){
           Swal.fire(
-            `You need verify your email`,
+            `You need verify your email or your account is disabled`,
             `Error`,
             'error'
           );
-        }else if(userFirebase.emailVerified===true){
+        }else if(userFirebase.emailVerified===true && this.enable==='Y'){
           this.userToken= new User("admin","password");
           this.authService.loginUser(this.userToken).subscribe(data=>{
             if(localStorage.getItem("type")==='0'){
@@ -82,12 +88,13 @@ export class LoginComponent implements OnInit,OnDestroy {
           );
         })
         }
-    
+
         
       },catchError=>{
         console.warn(catchError);
       })
-     
+    }, 1500);
+
     }).catch(resp=>{
       Swal.fire(
         `${resp}`,
