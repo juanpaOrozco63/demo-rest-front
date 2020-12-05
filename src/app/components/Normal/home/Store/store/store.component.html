@@ -10,7 +10,7 @@
             <span class="badge badge-secondary ">Products</span></h1>
     </div>
     <div class="col-11 mt-4">
-        <input class="form-control" type="text" placeholder="Search for Name" [(ngModel)]="name" (keyup.enter)="findByName(name)">
+        <input class="form-control" type="text" placeholder="Search for Name" [(ngModel)]="name" (keyup.enter)="findByName()">
         <div class="alert alert-danger" role="alert" *ngIf="productName">
             There are no products with the name {{name}}
         </div>

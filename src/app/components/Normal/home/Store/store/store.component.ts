@@ -8,9 +8,6 @@ import Swal from 'sweetalert2';
 import { Subscription } from 'rxjs';
 import { AddShoppingProduct } from '../../../../../domain/add-shopping-product';
 import { Email } from '../../../../../domain/email';
-import { shoppingProductModel } from '../../../../../models/shoppingProduct.model';
-import { type } from 'os';
-
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
