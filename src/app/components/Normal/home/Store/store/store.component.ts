@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 import { AddShoppingProduct } from '../../../../../domain/add-shopping-product';
 import { Email } from '../../../../../domain/email';
 import { shoppingProductModel } from '../../../../../models/shoppingProduct.model';
+import { type } from 'os';
 
 @Component({
   selector: 'app-store',
@@ -24,6 +25,8 @@ export class StoreComponent implements OnInit {
   totalItems:number=0;
   quantity:number=1;
   carId:number;
+  name:string=''
+  productName:boolean=false;
   public carts:ShoppingCart[];
 
   constructor(public productService:ProductService,public shoppingCartService:ShoppingCartService,public auth: AngularFireAuth) { }
@@ -67,6 +70,8 @@ export class StoreComponent implements OnInit {
         'success'
       )
       this.quantity=1;
+      this.findAll();
+      this.name='';
 })
 
   }
@@ -164,6 +169,30 @@ export class StoreComponent implements OnInit {
    
   })
 })
+  }
+  findByName():void{
+    this.productService.findAll().subscribe(data=>{
+      this.products=data;
+      this.products=[]
+      let validacion:boolean=false;
+      data.forEach(resp => {
+        if(this.name===resp.name){
+          this.products.push(resp);
+          this.productName=false;
+          validacion=true;
+        }
+        });
+        if(this.name===''){
+          validacion=true;
+          this.findAll();
+          this.productName=false;
+        }
+        if(validacion===false){
+          this.productName=true;
+        }
+      },error=>{
+        console.error(error);
+      })
   }
 
 
