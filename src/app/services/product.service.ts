@@ -75,6 +75,26 @@ export class ProductService {
       }));
 
   }
+  public filterName(name:string):Observable<any>{
+    let headers=this.createTokenHeader();
+
+    return this.httClient.get<any>(this.url+'filterName/'+name,{headers:headers}).pipe(
+      catchError(e=>{
+        Swal.fire('Error',`Produc ${name} don't exist`,'error');
+         return throwError(e);
+       })
+    );
+  }
+  public filterPrice(p1:number,p2:number):Observable<any>{
+    let headers=this.createTokenHeader();
+
+    return this.httClient.get<any>(this.url+'filterPrice/'+p1+"/"+p2,{headers:headers}).pipe(
+      catchError(e=>{
+        Swal.fire('Error',`Produc between ${p1} and ${p2} don't exist`,'error');
+         return throwError(e);
+       })
+    );
+  }
 
 }
   

@@ -5,15 +5,42 @@
     <button class="btn btn-danger" (click)="clearCart()"><i class="fas fa-trash"><span> {{totalItems}}</span></i></button>
 </div>
 <div class="container">
-    <div class="d-none d-sm-none d-md-block">
+    <div class=" d-md-block">
         <h1 class="text-center  mb-0 " id="title">
-            <span class="badge badge-secondary ">Products</span></h1>
+            <button id="link" (click)="findAll()" class="btn btn-secondary"><span>Products</span></button>
+        </h1>
     </div>
-    <div class="col-11 mt-4">
-        <input class="form-control" type="text" placeholder="Search for Name" [(ngModel)]="name" (keyup.enter)="findByName()">
-        <div class="alert alert-danger" role="alert" *ngIf="productName">
-            There are no products with the name {{name}}
+    <div class="row">
+
+        <div class="col-10 mt-4">
+            <input class="form-control" type="text" placeholder="Search for Name" [(ngModel)]="name" (keyup.enter)="findByName()">
+
         </div>
+        <div class="col-2 mt-4">
+            <button (click)="findByName()" class="btn btn-secondary">Search</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1 mt-2 text-center">
+            <label for="" class="col-form-label">From</label>
+
+        </div>
+        <div class="col-4 mt-2">
+            <input class="form-control" type="number" placeholder="From $" [(ngModel)]="from" (keyup.enter)="findByPrice()">
+
+        </div>
+        <div class="col-1 mt-2 text-center">
+            <label for="" class="col-form-label">To</label>
+
+        </div>
+        <div class="col-4 mt-2">
+            <input class="form-control" type="number" placeholder="To $" [(ngModel)]="to" (keyup.enter)="findByPrice()">
+
+        </div>
+        <div class="col-2 mt-2">
+            <button (click)="findByPrice()" class="btn btn-secondary">Search</button>
+        </div>
+
     </div>
     <div class="col-xl-12 col-md-12 col-sm-12 col-lg-12">
 

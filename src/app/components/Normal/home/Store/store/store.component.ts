@@ -23,7 +23,8 @@ export class StoreComponent implements OnInit {
   quantity:number=1;
   carId:number;
   name:string=''
-  productName:boolean=false;
+  to:number=0
+  from:number=0
   public carts:ShoppingCart[];
 
   constructor(public productService:ProductService,public shoppingCartService:ShoppingCartService,public auth: AngularFireAuth) { }
@@ -41,6 +42,9 @@ export class StoreComponent implements OnInit {
   findAll():void{
     this.productService.findAll().subscribe(data=>{
       this.products=data;
+      this.name=null;
+      this.to=null
+      this.from=null
     },error=>{
       console.error(error);
     })
@@ -168,29 +172,15 @@ export class StoreComponent implements OnInit {
 })
   }
   findByName():void{
-    this.productService.findAll().subscribe(data=>{
-      this.products=data;
-      this.products=[]
-      let validacion:boolean=false;
-      data.forEach(resp => {
-        if(this.name===resp.name){
-          this.products.push(resp);
-          this.productName=false;
-          validacion=true;
-        }
-        });
-        if(this.name===''){
-          validacion=true;
-          this.findAll();
-          this.productName=false;
-        }
-        if(validacion===false){
-          this.productName=true;
-        }
-      },error=>{
-        console.error(error);
-      })
+    this.productService.filterName(this.name).subscribe(resp=>{
+      this.products=resp;
+     
+    })
   }
 
-
+  findByPrice():void{
+    this.productService.filterPrice(this.from,this.to).subscribe(resp=>{
+      this.products=resp;
+    })
+  }
 }

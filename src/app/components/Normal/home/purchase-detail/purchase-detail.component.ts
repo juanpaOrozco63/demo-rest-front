@@ -27,7 +27,7 @@ export class PurchaseDetailComponent implements OnInit {
   carId:number;
   email:string=null;
   pageActual:number=1;
-
+  totalInvoice:number=0
   ngOnInit(): void {
     this.getCarId();
     this.findAllPayment();
@@ -59,6 +59,7 @@ export class PurchaseDetailComponent implements OnInit {
       this.products.forEach(resp => {
         if(resp.shoppingCartId===this.carId){
           this.products2.push(resp);
+          this.totalInvoice+=resp.total 
         }   
       });
     })
